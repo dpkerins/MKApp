@@ -1,0 +1,112 @@
+<div ng-hide="authData">
+	<div class="admin-section">
+		Email: <input type="text" class="email-input"></input>
+		Password: <input type="password" class="password-input"></input>
+		<button ng-click="authorize_password()">SIGN IN!</button>
+	</div>
+</div>
+
+<div ng-show="authData" class="admin-container">
+	<div class="admin-section">
+		<h4>WELCOME PAGE</h4>
+		Landing Page Intro:<input ng-model="obj.WelcomePage.Introduction" class="landing-input" type="text"></input>
+	</div>
+	<div class="admin-section">
+		<form>
+			<h4>PERSONAL INFO</h4>
+			First Name: <input ng-model="obj.AboutMe.PersonalInfo.FirstName" type="text" class="personal-input"></input>
+			Last Name: <input ng-model="obj.AboutMe.PersonalInfo.LastName" type="text" class="personal-input"></input>
+			Age: <input ng-model="obj.AboutMe.PersonalInfo.Age" type="text" class="personal-input"></input>
+		</form>
+	</div>
+	<div class="admin-section">
+		<h4>RESUME</h4>
+	</div>
+	<div class="admin-section">
+		<h4>WORK HISTORY</h4>
+		<div class="all-work">
+			<div ng-repeat="job in obj.Resume.Work" class="work-section">
+				Title: <input ng-model="job.Title"></input><br><br>
+				Company: <input ng-model="job.Company"></input><br><br>
+				Place: <input ng-model="job.Place"></input><br><br><br>
+				Description: <input ng-model="job.Description"></input><br>
+			</div>
+			<div ng-show="showJobAdder" class="work-section">
+				Title: <input ng-model=jobtitle></input><br><br>
+				Company: <input ng-model="jobcompany"></input><br><br>
+				Place: <input ng-model="jobplace"></input><br><br>
+				Description: <input ng-model="jobdescription"></input><br><br>
+				<input type="button" ng-click="saveNewJob()" value="SAVE THIS NEW JOB"></input>
+			</div>
+			<input type="button" value="New Job" ng-click="appendJob()"></input>
+		</div>
+	</div>
+	<div class="admin-section">
+		<h4>EDUCATION</h4>
+		<div class="all-education">
+			<div ng-repeat="school in obj.Resume.Education" class="education-section">
+				School: <input ng-model="school.Name"></input><br><br>
+				Dates: <input ng-model="school.Start"></input> - <input ng-model="school.End"></input><br><br>
+				Degree: <input ng-model="school.Degree"></input><br><br>
+				Field of Study: <input ng-model="school.Field"></input><br><br>
+				Grade: <input ng-model="school.Grade"></input><br><br>
+				Activities: <input ng-model="school.Activities"></input><br><br>
+				Description: <input ng-model="school.Description"></input><br><br>
+			</div>
+			<div ng-show="showSchoolAdder" class="education-section">
+				School: <input ng-model="schoolname"></input><span> Required</span><br><br>
+				Dates: <input ng-model="schoolstart"></input> - <input ng-model="schoolend"></input><span> Required</span><br><br>
+				Degree: <input ng-model="schooldegree"></input><span> Required</span><br><br>
+				Field of Study: <input ng-model="schoolfield"></input><span> Required</span><br><br>
+				Grade: <input ng-model="schoolgrade"></input><br><br>
+				Activities: <input ng-model="schoolactivities"></input><br><br>
+				Description: <input ng-model="schooldescription"></input><br><br>
+				<input type="button" ng-click="saveNewSchool()" value="SAVE THIS NEW SCHOOL"></input><br><br>
+			</div>
+			<input type="button" value="New School" ng-click="appendSchool()"></input>
+		</div>
+	</div>
+	<div class="admin-section">
+		<h4>PROJECTS</h4>
+		<div class="all-projects">
+			<div ng-repeat="project in obj.Portfolio" class="project-section">
+				Project Name: <input ng-model="project.Name" type="text" class="project-input"></input><br><br>
+				Image Source: <input ng-model="project.ImageSource" type="text" class="project-input"></input><br><br>
+				Client Name: <input ng-model="project.Client" type="text" class="project-input"></input><br><br>
+				Short Summary: <input ng-model="project.Short_Summary" type="text" class="project-input"></input><br><br>
+				Long Summary: <input ng-model="project.Long_Summary" type="text" class="project-input"></input><br><br><br><br>
+			</div>
+			<div ng-show="showProjectAdder" class="project-section">
+				Project Name: <input ng-model="projectname" type="text" class="project-input new-name"></input><br><br>
+				Image Source: <input ng-model="projectimage" type="text" class="project-input new-image"></input><br><br>
+				Client Name: <input ng-model="projectclient" type="text" class="project-input new-client"></input><br><br>
+				Short Summary: <input ng-model="projectshortsummary" type="text" class="project-input new-short-summary"></input><br><br>
+				Long Summary: <input ng-model="projectlongsummary" type="text" class="project-input new-long-summary"></input><br><br>
+				<input type="button" ng-click="saveNewProject()" value="SAVE THIS NEW PROJECT"></input><br><br>
+			</div>
+		</div>
+		<input type="button" value="New Project" ng-click="appendProject()"></input>
+	</div>
+
+	<div class="admin-section">
+		<h4>FEEDBACK</h4>
+	</div>
+
+	<div class="admin-section">
+		<h4>SOCIAL MEDIA</h4>
+		Instagram: <input ng-model="obj.Social_Media.Instagram" type="text" class="social-input"></input><br><br>
+		Twitter: <input ng-model="obj.Social_Media.Twitter" type="text" class="social-input"></input>
+	</div>
+	<div class="admin-section">
+		<button ng-click="obj.$save()" class="change-save">SAVE CHANGES</button>
+	</div>
+	<div class="admin-section">
+		<button ng-click="logOut()">LOGOUT!!!</button>
+	</div>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/main.css" rel="stylesheet"> -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+     <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <!-- Include the AngularJS routing library -->
+    <script src="https://code.angularjs.org/1.2.28/angular-route.min.js"></script>
+    <!-- INCLUDE FIREBASE DATABASE -->
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.0.2/angularfire.min.js"></script>
+
+  </head>
+  <body ng-app="MKApp">
+    <div ng-view class="app-container container-fluid"></div> 
+
+    <!-- Modules -->
+    <script src="js/app.js"></script>  
+    <!-- Controllers -->
+    <script type="text/javascript" src="js/controllers/MainController.js"></script>
+    <script type="text/javascript" src="js/controllers/CookingController.js"></script>
+    <script type="text/javascript" src="js/controllers/BlogController.js"></script>
+    <script type="text/javascript" src="js/controllers/MenuController.js"></script>
+    <script type="text/javascript" src="js/controllers/AboutMeController.js"></script>
+    <script type="text/javascript" src="js/controllers/AdminController.js"></script>
+    <script type="text/javascript" src="js/controllers/BlogPostController.js"></script>
+    <script type="text/javascript" src="js/controllers/RecipeController.js"></script>
+    <!-- Directives -->
+    <script type="text/javascript" src="js/directives/appheader.js"></script>
+    <!-- Services -->
+  </body>
+</html>
