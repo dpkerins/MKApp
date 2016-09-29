@@ -205,11 +205,6 @@ ul {
 .post-content {
 	min-height: 40%;
 	width: 100%;
-	display: -webkit-flex;
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: center;
-	align-content: center;
 	position: relative;
 	top: 10%;
 }

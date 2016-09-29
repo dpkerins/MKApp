@@ -31,13 +31,15 @@ app.controller('AdminController', ['$scope', '$firebaseObject', '$firebaseAuth',
 	};
 
 	$scope.obj = $firebaseObject(ref);
-	var portfolioList = $firebaseArray(ref.child('Portfolio'));
+	var postList = $firebaseArray(ref.child('Posts'));
 	var schoolList = $firebaseArray(ref.child('Resume/Education'));
 	var jobList = $firebaseArray(ref.child('Resume/Work'));
 
-	$scope.showJobAdder = false;
-	$scope.appendJob = function(){
-		$scope.showJobAdder = true;
+	$scope.showPostAdder = false;
+	$scope.appendPost = function(){
+		$scope.showPostAdder = true;
+		var todayDate = new Date();
+		$scope.postDate = todayDate;
 	};
 
 	$scope.showSchoolAdder = false;
@@ -50,20 +52,20 @@ app.controller('AdminController', ['$scope', '$firebaseObject', '$firebaseAuth',
 		$scope.showProjectAdder = true;
 	};
 
-	$scope.saveNewJob = function() {
-		$firebaseArray(ref).$save('Work');
-		var newJobObject = {
-			'Title' : $scope.jobtitle,
-			'Company' : $scope.jobcompany,
-			'Place' : $scope.jobplace,
-			'Description' : $scope.jobdescription
+	$scope.saveNewPost = function() {
+		$firebaseArray(ref).$save('Posts');
+		var newPostObject = {
+			'Title' : $scope.postTitle,
+			'Date' : $scope.postDate,
+			'Content' : $scope.postContent,
+			'ImageSource' : $scope.postImageSource
 		};
-		jobList.$add(newJobObject);
-		$scope.jobtitle = null;
-		$scope.jobcompany = null;
-		$scope.jobplace = null;
-		$scope.jobdescription = null;
-		$scope.showJobAdder = false;
+		postList.$add(newPostObject);
+		$scope.postTitle = null;
+		$scope.postDate = null;
+		$scope.postContent = null;
+		$scope.postImageSource = null;
+		$scope.showPostAdder = false;
 	};
 
 
