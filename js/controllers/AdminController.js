@@ -32,24 +32,13 @@ app.controller('AdminController', ['$scope', '$firebaseObject', '$firebaseAuth',
 
 	$scope.obj = $firebaseObject(ref);
 	var postList = $firebaseArray(ref.child('Posts'));
-	var schoolList = $firebaseArray(ref.child('Resume/Education'));
-	var jobList = $firebaseArray(ref.child('Resume/Work'));
+	var recipeList = $firebaseArray(ref.child('Recipes'));
 
 	$scope.showPostAdder = false;
 	$scope.appendPost = function(){
 		$scope.showPostAdder = true;
 		var todayDate = new Date();
 		$scope.postDate = todayDate;
-	};
-
-	$scope.showSchoolAdder = false;
-	$scope.appendSchool = function() {
-		$scope.showSchoolAdder = true;
-	};
-
-	$scope.showProjectAdder = false;
-	$scope.appendProject = function() {
-		$scope.showProjectAdder = true;
 	};
 
 	$scope.saveNewPost = function() {
@@ -68,52 +57,26 @@ app.controller('AdminController', ['$scope', '$firebaseObject', '$firebaseAuth',
 		$scope.showPostAdder = false;
 	};
 
-
-	$scope.saveNewProject = function() {
-		$firebaseArray(ref).$save('Portfolio');
-		var newProjectObject = {
-			'Client' : $scope.projectclient,
-			'ImageSource' : $scope.projectimage,
-			'Long_Summary' : $scope.projectlongsummary,
-			'Name' : $scope.projectname,
-			'Short_Summary' : $scope.projectshortsummary
-		};
-		portfolioList.$add(newProjectObject);
-		$scope.projectshortsummary = null;
-		$scope.projectlongsummary = null;
-		$scope.projectimage = null;
-		$scope.projectclient = null;
-		$scope.projectname = null;
-		$scope.showProjectAdder = false;
+	$scope.showRecipeAdder = false;
+	$scope.appendRecipe = function(){
+		$scope.showRecipeAdder = true;
 	};
 
-	$scope.schoolgrade = null;
-	$scope.schoolactivities = null;
-	$scope.schooldescription = null;
-
-	$scope.saveNewSchool = function() {
-		$firebaseArray(ref).$save('Education');
-		var newSchoolObject = {
-			'Name' : $scope.schoolname,
-			'Start' : $scope.schoolstart,
-			'End' : $scope.schoolend,
-			'Degree' : $scope.schooldegree,
-			'Field' : $scope.schoolfield,
-			'Grade' : $scope.schoolgrade,
- 			'Activities' : $scope.schoolactivities,
-			'Description' : $scope.schooldescription
+	$scope.saveNewRecipe = function() {
+		$firebaseArray(ref).$save('Recipes');
+		var newRecipeObject = {
+			'Title' : $scope.recipeTitle,
+			'Content' : $scope.recipeContent,
+			'ImageSource' : $scope.recipeImageSource
 		};
-		schoolList.$add(newSchoolObject);
-		$scope.schoolname = null;
-		$scope.schoolstart = null;
-		$scope.schoolend = null;
-		$scope.schooldegree = null;
-		$scope.schoolfield = null;
-		$scope.schoolgrade = null;
-		$scope.schoolactivities = null;
-		$scope.schooldescription = null;
-		$scope.showSchoolAdder = false;
+		recipeList.$add(newRecipeObject);
+		$scope.recipeTitle = null;
+		$scope.recipeContent = null;
+		$scope.recipeImageSource = null;
+		$scope.showRecipeAdder = false;
 	};
+
+
 
 
 

@@ -1,7 +1,11 @@
 <div appheader class="header"></div>
 <div class="recipe-cover-image" style="background: url('{{ currentRecipe.ImageSource }}'); background-position: center; background-size: cover">
 </div>	
-<div class="recipe-content"></div>
+<div class="recipe-content">
+	<h2>{{ currentRecipe.Title }}</h4>
+	<p>{{ currentRecipe.Date }}</p>	
+	<h4>{{ currentRecipe.Content }}</h4>
+</div>
 <div class="footer">
   <div class="footer-item social-links">
   	<a href="https://www.instagram.com/diggerous/" target="_blank"><img class="social-pic" src="img/Instagram_Logo.png"></a>

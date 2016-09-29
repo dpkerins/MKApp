@@ -34,12 +34,29 @@
 			</div>
 			<div ng-show="showPostAdder" class="posts-section">
 				Title: <input ng-model="postTitle" class="post-input new-title"></input><br><br>
-				Date: <input ng-model="postDate" class="post-input new-dae"></input><br><br>
+				Date: <input ng-model="postDate" class="post-input new-date"></input><br><br>
 				Content: <input ng-model="postContent" class="post-input new-content"></input><br><br>
 				Feature Image: <input ng-model="postImageSource" class="post-input new-feature-image"></input><br><br>
 				<input type="button" ng-click="saveNewPost()" value="SAVE THIS NEW POST"></input><br><br>
 			</div>
 			<input type="button" value="New Post" ng-click="appendPost()"></input>
+		</div>
+	</div>
+	<div class="admin-section">
+		<h4>Recipes</h4>
+		<div class="all-recipes">
+			<div ng-repeat="recipe in obj.Recipes" class="recipes-section">
+				Title: <input ng-model="recipe.Title"></input><br><br>
+				Content: <input ng-model="recipe.Content"></input><br><br>
+				Feature Image: <input ng-model="recipe.ImageSource"></input><br><br>
+			</div>
+			<div ng-show="showRecipeAdder" class="recipes-section">
+				Title: <input ng-model="recipeTitle" class="recipe-input new-title"></input><br><br>
+				Content: <input ng-model="recipeContent" class="post-recipe new-content"></input><br><br>
+				Feature Image: <input ng-model="recipeImageSource" class="recipe-input new-feature-image"></input><br><br>
+				<input type="button" ng-click="saveNewRecipe()" value="SAVE THIS NEW RECIPE"></input><br><br>
+			</div>
+			<input type="button" value="New Recipe" ng-click="appendRecipe()"></input>
 		</div>
 	</div>
 	<div class="admin-section">
