@@ -73,6 +73,9 @@ a {
 	margin-right: 5px;
 	text-decoration: none;
 }
+a:hover {
+	cursor: pointer;
+}
 img {
 }
 ul {
@@ -452,6 +455,9 @@ ul {
 	height: 100%;
 	border-right: 2px solid black;
 }
+.admin-sidebar h4:hover{
+	cursor: pointer;
+}
 .admin-content {
 	flex: 4;
 	height: 100%;
@@ -486,6 +492,9 @@ ul {
 .admin-section {
 	flex: 1 100%;
 	padding: 10px;
+}
+.preview-image {
+	height: 150px;
 }
 .education-section {
 	border: 1px solid black;

@@ -43,13 +43,13 @@
 						Title: <input ng-model="post.Title"></input><br><br>
 						Date: <input ng-model="post.Date"></input><br><br>
 						Content: <textarea ng-model="post.Content"></textarea><br><br>
-						Feature Image: <input ng-model="post.ImageSource"></input><br><br>
+						Preview Image: <img class="preview-image" src="{{ post.ImageSource }}">
 					</div>
 					<div ng-show="showPostAdder" class="posts-section">
 						Title: <input ng-model="postTitle" class="post-input new-title"></input><br><br>
 						Date: <input ng-model="postDate" class="post-input new-date"></input><br><br>
 						Content: <textarea ng-model="postContent" class="post-input new-content"></textarea><br><br>
-						Feature Image: <input ng-model="postImageSource" class="post-input" id="new-post-feature-image"></input><br><br>
+						Preview Image: <img id="post-preview-image" class="preview-image" src="../img/placeholder_image.jpg">
 						<div class="media-library admin-section">
 							<input type="file" id="theFile" />Required
 							<input type="text" id="file-name" value="File Name"></input>Required
@@ -66,12 +66,12 @@
 					<div ng-repeat="recipe in obj.Recipes" class="recipes-section">
 						Title: <input ng-model="recipe.Title"></input><br><br>
 						Instructions: <textarea ng-model="recipe.Content"></textarea><br><br>
-						Feature Image: <input ng-model="recipe.ImageSource"></input><br><br>
+						Preview Image: <input ng-model="recipe.ImageSource"></input><br><br>
 					</div>
 					<div ng-show="showRecipeAdder" class="recipes-section">
 						Title: <input ng-model="recipeTitle" class="recipe-input new-title"></input><br><br>
 						Content: <textarea ng-model="recipeContent" class="post-recipe new-content"></textarea><br><br>
-						Feature Image: <input ng-model="recipeImageSource" class="recipe-input" id="new-recipe-feature-image"></input><br><br>
+						Preview Image: <img id="recipe-preview-image" class="preview-image" src="../img/placeholder_image.jpg">
 						<div class="media-library admin-section">
 							<input type="file" id="theFile" />Required
 							<input type="text" id="file-name" value="File Name"></input>Required

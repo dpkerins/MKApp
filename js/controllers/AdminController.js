@@ -89,6 +89,11 @@ app.controller('AdminController', ['$scope', '$firebaseObject', '$firebaseAuth',
 	};
 
 	$scope.saveNewPost = function() {
+		// check for image file and add placeholder if none found //
+		if (!$scope.postImageSource){
+			$scope.postImageSource = "../../img/placeholder_image.jpg"
+		}
+
 		$firebaseArray(ref).$save('Posts');
 		var newPostObject = {
 			'Title' : $scope.postTitle,
@@ -129,7 +134,7 @@ app.controller('AdminController', ['$scope', '$firebaseObject', '$firebaseAuth',
 	var mediaLibrary = storageRef.child('media');
 
 	$scope.uploadNewPostMedia = function(){
-		var featureImage = document.getElementById('new-post-feature-image');
+		var previewImage = document.getElementById('post-preview-image');
 
 		var uploadRef;
 
@@ -140,15 +145,14 @@ app.controller('AdminController', ['$scope', '$firebaseObject', '$firebaseAuth',
 		imageRef = mediaLibrary.child(fileName);
 		imageRef.put(file).then(function(snapshot){
 			uploadRef = imageRef.getDownloadURL().then(function(url){
-				console.log(url);
 				$scope.postImageSource = url;
-				featureImage.value = url;
+				previewImage.src = url;
 			});
 		});
 	}
 
 	$scope.uploadNewRecipeMedia = function(){
-		var featureImage = document.getElementById('new-recipe-feature-image');
+		var previewImage = document.getElementById('post-preview-image');
 
 		var uploadRef;
 
@@ -159,9 +163,8 @@ app.controller('AdminController', ['$scope', '$firebaseObject', '$firebaseAuth',
 		imageRef = mediaLibrary.child(fileName);
 		imageRef.put(file).then(function(snapshot){
 			uploadRef = imageRef.getDownloadURL().then(function(url){
-				console.log(url);
 				$scope.recipeImageSource = url;
-				featureImage.value = url;
+				previewImage.src = url;
 			});
 		});
 	}
