@@ -30,6 +30,53 @@ app.controller('AdminController', ['$scope', '$firebaseObject', '$firebaseAuth',
 		});
 	};
 
+
+	$scope.adminWelcome = false;
+	$scope.adminPersonal = false;
+	$scope.adminBlog = true;
+	$scope.adminRecipes = false;
+	$scope.adminHeader = "Blog";
+
+	$scope.showAdminWelcome = function(){
+		$scope.adminWelcome = true;
+		$scope.adminPersonal = false;
+		$scope.adminBlog = false;
+		$scope.adminRecipes = false;
+		$scope.adminHeader = "Welcome Page";
+	}
+	$scope.showAdminPersonal = function(){
+		$scope.adminWelcome = false;
+		$scope.adminPersonal = true;
+		$scope.adminBlog = false;
+		$scope.adminRecipes = false;
+		$scope.adminHeader = "Personal Info";
+	}
+	$scope.showAdminBlog = function(){
+		$scope.adminWelcome = false;
+		$scope.adminPersonal = false;
+		$scope.adminBlog = true;
+		$scope.adminRecipes = false;
+		$scope.adminHeader = "Blog";
+	}
+	$scope.showAdminRecipes = function(){
+		$scope.adminWelcome = false;
+		$scope.adminPersonal = false;
+		$scope.adminBlog = false;
+		$scope.adminRecipes = true;
+		$scope.adminHeader = "Recipes";
+	}
+
+
+
+
+
+
+
+
+
+
+
+
 	$scope.obj = $firebaseObject(ref);
 	var postList = $firebaseArray(ref.child('Posts'));
 	var recipeList = $firebaseArray(ref.child('Recipes'));
@@ -50,10 +97,10 @@ app.controller('AdminController', ['$scope', '$firebaseObject', '$firebaseAuth',
 			'ImageSource' : $scope.postImageSource
 		};
 		postList.$add(newPostObject);
-		$scope.postTitle = null;
-		$scope.postDate = null;
-		$scope.postContent = null;
-		$scope.postImageSource = null;
+		$scope.postTitle = "";
+		$scope.postDate = "";
+		$scope.postContent = "";
+		$scope.postImageSource = "";
 		$scope.showPostAdder = false;
 	};
 
@@ -70,12 +117,54 @@ app.controller('AdminController', ['$scope', '$firebaseObject', '$firebaseAuth',
 			'ImageSource' : $scope.recipeImageSource
 		};
 		recipeList.$add(newRecipeObject);
-		$scope.recipeTitle = null;
-		$scope.recipeContent = null;
-		$scope.recipeImageSource = null;
+		$scope.recipeTitle = "";
+		$scope.recipeContent = "";
+		$scope.recipeImageSource = "";
 		$scope.showRecipeAdder = false;
 	};
 
+
+	var storage = firebase.storage();
+	var storageRef = storage.ref();
+	var mediaLibrary = storageRef.child('media');
+
+	$scope.uploadNewPostMedia = function(){
+		var featureImage = document.getElementById('new-post-feature-image');
+
+		var uploadRef;
+
+		var fileName = document.getElementById('file-name').value;
+		var fileUpload = document.getElementById('theFile');
+		var file = fileUpload.files[0];
+
+		imageRef = mediaLibrary.child(fileName);
+		imageRef.put(file).then(function(snapshot){
+			uploadRef = imageRef.getDownloadURL().then(function(url){
+				console.log(url);
+				$scope.postImageSource = url;
+				featureImage.value = url;
+			});
+		});
+	}
+
+	$scope.uploadNewRecipeMedia = function(){
+		var featureImage = document.getElementById('new-recipe-feature-image');
+
+		var uploadRef;
+
+		var fileName = document.getElementById('file-name').value;
+		var fileUpload = document.getElementById('theFile');
+		var file = fileUpload.files[0];
+
+		imageRef = mediaLibrary.child(fileName);
+		imageRef.put(file).then(function(snapshot){
+			uploadRef = imageRef.getDownloadURL().then(function(url){
+				console.log(url);
+				$scope.recipeImageSource = url;
+				featureImage.value = url;
+			});
+		});
+	}
 
 
 
