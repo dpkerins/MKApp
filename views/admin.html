@@ -19,16 +19,19 @@
 			<button ng-click="obj.$save()" class="change-save">SAVE CHANGES</button>
 		</div>
 		<div class="admin-items">
-			<div ng-show="adminWelcome" class="admin-section">
-				<h4>WELCOME PAGE</h4>
-				Landing Page Intro:<input ng-model="obj.WelcomePage.Introduction" class="landing-input" type="text"></input>
-			</div>
 			<div ng-show="adminPersonal" class="admin-section">
 				<form>
 					<h4>PERSONAL INFO</h4>
 					First Name: <input ng-model="obj.AboutMe.PersonalInfo.FirstName" type="text" class="personal-input"></input>
 					Last Name: <input ng-model="obj.AboutMe.PersonalInfo.LastName" type="text" class="personal-input"></input>
-					Age: <input ng-model="obj.AboutMe.PersonalInfo.Age" type="text" class="personal-input"></input>
+					Age: <input ng-model="obj.AboutMe.PersonalInfo.Age" type="text" class="personal-input"></input><br><br>
+					Preview Image: <img id="about-preview-image" class="preview-image" src="{{ obj.AboutMe.PersonalInfo.ImageSource }}"><br><br>
+					Image Source: <input ng-model="obj.AboutMe.PersonalInfo.ImageSource" id="about-image-source"></input>
+					<div class="media-library admin-section">
+						<input type="file" id="about-image-file" />Required
+						<input type="text" id="about-file-name" value="File Name"></input>Required
+						<input type="button" id="post-media-upload-button" value="Upload!" ng-click="uploadNewAboutMedia()"></input>
+					</div>
 				</form>
 			</div>
 			<div ng-show="adminPersonal" class="admin-section">
@@ -39,47 +42,24 @@
 			<div ng-show="adminBlog" class="admin-section">
 				<h4>Blog Posts</h4>
 				<div class="all-posts">
-					<div ng-repeat="post in obj.Posts" class="posts-section">
-						Title: <input ng-model="post.Title"></input><br><br>
-						Date: <input ng-model="post.Date"></input><br><br>
-						Content: <textarea ng-model="post.Content"></textarea><br><br>
-						Preview Image: <img class="preview-image" src="{{ post.ImageSource }}">
-					</div>
-					<div ng-show="showPostAdder" class="posts-section">
-						Title: <input ng-model="postTitle" class="post-input new-title"></input><br><br>
-						Date: <input ng-model="postDate" class="post-input new-date"></input><br><br>
-						Content: <textarea ng-model="postContent" class="post-input new-content"></textarea><br><br>
-						Preview Image: <img id="post-preview-image" class="preview-image" src="../img/placeholder_image.jpg">
-						<div class="media-library admin-section">
-							<input type="file" id="theFile" />Required
-							<input type="text" id="file-name" value="File Name"></input>Required
-							<input type="button" id="post-media-upload-button" value="Upload!" ng-click="uploadNewPostMedia()"></input>
+					<div ng-repeat="post in obj.Posts">
+						<div class="each-post-list">
+							<a href="#/admin/blog/{{$index}}"><h2>{{ post.Title }}</h2></a>
+							<p>{{ post.Date.Month + ' ' + post.Date.Day + ', ' + post.Date.Year }}</p>
 						</div>
-						<input type="button" ng-click="saveNewPost()" value="SAVE THIS NEW POST"></input><br><br>
 					</div>
-					<input type="button" value="New Post" ng-click="appendPost()"></input>
+				<div class="admin-items">
+					<a href="#/admin/new/blog">NEW POST PLEASE!</a>
 				</div>
 			</div>
 			<div ng-show="adminRecipes" class="admin-section">
 				<h4>Recipes</h4>
 				<div class="all-recipes">
-					<div ng-repeat="recipe in obj.Recipes" class="recipes-section">
-						Title: <input ng-model="recipe.Title"></input><br><br>
-						Instructions: <textarea ng-model="recipe.Content"></textarea><br><br>
-						Preview Image: <input ng-model="recipe.ImageSource"></input><br><br>
-					</div>
-					<div ng-show="showRecipeAdder" class="recipes-section">
-						Title: <input ng-model="recipeTitle" class="recipe-input new-title"></input><br><br>
-						Content: <textarea ng-model="recipeContent" class="post-recipe new-content"></textarea><br><br>
-						Preview Image: <img id="recipe-preview-image" class="preview-image" src="../img/placeholder_image.jpg">
-						<div class="media-library admin-section">
-							<input type="file" id="theFile" />Required
-							<input type="text" id="file-name" value="File Name"></input>Required
-							<input type="button" id="recipe-media-upload-button" value="Upload!" ng-click="uploadNewRecipeMedia()"></input>
+					<div ng-repeat="recipe in obj.Recipes">
+						<div class="each-recipe-list">
+							<a href="#/admin/recipes/{{$index}}"><h2>{{ recipe.Title }}</h2></a>
 						</div>
-						<input type="button" ng-click="saveNewRecipe()" value="SAVE THIS NEW RECIPE"></input><br><br>
 					</div>
-					<input type="button" value="New Recipe" ng-click="appendRecipe()"></input>
 				</div>
 			</div>
 		</div>

@@ -1,4 +1,7 @@
-app.controller('MainController', ['$scope', '$firebaseObject', '$window', '$document', function($scope, $firebaseObject, $window, $document){
+app.controller('MainController', ['$scope', '$firebaseArray', '$window', '$document', function($scope, $firebaseArray, $window, $document){
 	var ref = firebase.database().ref('WelcomePage/');
-	$scope.welcomePage = $firebaseObject(ref);
+	$scope.welcomePage = $firebaseArray(ref);
+	$scope.blogArray = $firebaseArray(firebase.database().ref('Posts/'));
+	$scope.recipeArray = $firebaseArray(firebase.database().ref('Recipes/'));
+	
 }]);

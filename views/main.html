@@ -1,32 +1,72 @@
-<div appheader class="header"></div>
-<div class="main-container">
-	<div class="overlay"></div>
-	<div class="welcome-div">
-		<h1>{{ welcomePage.Introduction }}</h1><br>
-	</div>
-	<a><img class="arrow-img" src="img/arrow.png"></a>
-</div>
+<div class="main-container"></div>
+<div appheader class="main-header"></div>
 <div class="main-content">
-	<div class="main-div">
-		<div><h2>My Blog</h2></div>
-		<div></div>
-		<div><a href="#/blog/"><h3 class="category-page-link">Check out My Blog!</h3></a></div>
+	<div class="blog-main-content">
+		<div class="post-div">
+			<div class="post-div-image" style="background: url('{{ blogArray[0].ImageSource }}'); background-position: center; background-size: cover"></div>	
+			<div class="post-info">
+				<h3>{{ blogArray[0].Title}}</h3>
+				<h4>{{ blogArray[0].Date.Month + ' ' + blogArray[0].Date.Day + ', ' + blogArray[0].Date.Year }}</h4>
+				<p>{{ blogArray[0].Content | limitTo: 200 }}{{blogArray[0].Content.length > 200 ? '...' : ''}}</p>
+				<a href="#/blog/0">
+					<h4>Read More...</h4>
+				</a>
+			</div>
+		</div>
+		<div class="post-div">
+			<div class="post-div-image" style="background: url('{{ blogArray[1].ImageSource }}'); background-position: center; background-size: cover"></div>	
+			<div class="post-info">
+				<h3>{{ blogArray[1].Title}}</h3>
+				<h4>{{ blogArray[1].Date.Month + ' ' + blogArray[1].Date.Day + ', ' + blogArray[1].Date.Year }}</h4>
+				<p>{{ blogArray[1].Content | limitTo: 200 }}{{blogArray[1].Content.length > 200 ? '...' : ''}}</p>
+				<a href="#/blog/1">
+					<h4>Read More...</h4>
+				</a>
+			</div>
+		</div>	
+		<div class="post-div">
+			<div class="post-div-image" style="background: url('{{ blogArray[2].ImageSource }}'); background-position: center; background-size: cover"></div>	
+			<div class="post-info">
+				<h3>{{ blogArray[2].Title}}</h3>
+				<h4>{{ blogArray[2].Date.Month + ' ' + blogArray[2].Date.Day + ', ' + blogArray[2].Date.Year }}</h4>
+				<p>{{ blogArray[2].Content | limitTo: 200 }}{{blogArray[2].Content.length > 200 ? '...' : ''}}</p>
+				<a href="#/blog/2">
+					<h4>Read More...</h4>
+				</a>
+			</div>
+		</div>	
+		<div class="main-more-blog-posts"><a href="#/blog/"><h2>More Blog Posts...</h2></a></div>	
 	</div>
-	<div class="main-div">
-		<div><h2>Cooking</h2></div>
-		<div></div>
-		<div><a href="#/cooking"><h3 class="category-page-link">Get to Cooking!</h3></a></div>
-	</div>
-	<div id="firstMainDiv" class="main-div">
-		<div><h2>ABOUT ME</h2></div>
-		<div></div>
-		<div><a href="#/aboutme"><h3 class="category-page-link">More About Me...</h3></a></div>
+	<div class="sidebar">
+		<div class="inner-sidebar">
+			<div class="social-links">
+				<a href="https://www.instagram.com/diggerous/" target="_blank"><img class="social-pic" src="img/Instagram_Logo.png"></a>
+				<a href="https://twitter.com/douglaskerins" target="_blank"><img class="social-pic" src="img/Twitter_Logo.png"></a>
+			</div>
+			<input type="text" ng-model="blogSearch"></input>
+			<div class="sidebar-recipes">
+				<h3>Recent Recipes</h3>
+				<a href="#/recipes/0">
+					<div class="main-recipe-img" style="background: url('{{ recipeArray[0].ImageSource }}'); background-position: center; background-size: cover"></div>
+				</a>
+				<a href="#/recipes/1">
+					<div class="main-recipe-img" style="background: url('{{ recipeArray[1].ImageSource }}'); background-position: center; background-size: cover"></div>
+				</a>
+				<a href="#/recipes/2">
+					<div class="main-recipe-img" style="background: url('{{ recipeArray[2].ImageSource }}'); background-position: center; background-size: cover"></div>
+				</a>
+				<a href="#/recipes/3">
+					<div class="main-recipe-img" style="background: url('{{ recipeArray[3].ImageSource }}'); background-position: center; background-size: cover"></div>
+				</a>
+				<a href="#/recipes/4">
+					<div class="main-recipe-img" style="background: url('{{ recipeArray[4].ImageSource }}'); background-position: center; background-size: cover"></div>
+				</a>
+				<a href="#/recipes/5">
+					<div class="main-recipe-img" style="background: url('{{ recipeArray[5].ImageSource }}'); background-position: center; background-size: cover"></div>
+				</a>
+			</div>
+		</div>
 	</div>
 </div>
-<div class="footer">
-  <div class="footer-item social-links">
-  	<a href="https://www.instagram.com/diggerous/" target="_blank"><img class="social-pic" src="img/Instagram_Logo.png"></a>
-  	<a href="https://twitter.com/douglaskerins" target="_blank"><img class="social-pic" src="img/Twitter_Logo.png"></a>
-  </div>
-</div>
+
 

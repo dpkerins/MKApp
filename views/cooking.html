@@ -1,14 +1,22 @@
-<div appheader class="header"></div>
-<div class="content">
-	<div ng-repeat="recipe in recipes" class="cooking-div" style="background: url('{{ recipe.ImageSource }}'); background-position: center; background-size: cover">
-		<a href="#/recipes/{{$index}}"><div></div></a>
+<div class="main-container"></div>
+<div appheader class="main-header"></div>
+<div class="main-content">
+	<div class="cooking-main-content">
+		<div ng-repeat="recipe in recipes | filter:recipeSearch" class="cooking-div">
+			<h4>{{ recipe.Title }}</h4>
+			<a href="#/recipes/{{$index}}"><div style="background: url('{{ recipe.ImageSource }}'); background-position: center; background-size: cover">
+			</div></a>
+		</div>
 	</div>
-</div>	
-<div class="footer">
-  <div class="footer-item social-links">
-  	<a href="https://www.instagram.com/diggerous/" target="_blank"><img class="social-pic" src="img/Instagram_Logo.png"></a>
-  	<a href="https://twitter.com/douglaskerins" target="_blank"><img class="social-pic" src="img/Twitter_Logo.png"></a>
-  </div>
+	<div class="sidebar">
+		<div class="inner-sidebar">
+			<div class="social-links">
+				<a href="https://www.instagram.com/diggerous/" target="_blank"><img class="social-pic" src="img/Instagram_Logo.png"></a>
+				<a href="https://twitter.com/douglaskerins" target="_blank"><img class="social-pic" src="img/Twitter_Logo.png"></a>
+			</div>
+			Search Recipes: <input type="text" ng-model="recipeSearch"></input>
+		</div>
+	</div>
 </div>
 
 

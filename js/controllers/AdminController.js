@@ -1,4 +1,5 @@
 app.controller('AdminController', ['$scope', '$firebaseObject', '$firebaseAuth', '$firebaseArray', '$compile', function($scope, $firebaseObject, $firebaseAuth, $firebaseArray, $compile){
+
 	var ref = firebase.database().ref();
 	var firebaseProjects = firebase.database().ref('projects');
 
@@ -80,6 +81,7 @@ app.controller('AdminController', ['$scope', '$firebaseObject', '$firebaseAuth',
 	$scope.obj = $firebaseObject(ref);
 	var postList = $firebaseArray(ref.child('Posts'));
 	var recipeList = $firebaseArray(ref.child('Recipes'));
+	var aboutObject = $firebaseObject(ref.child('AboutMe/PersonalInfo/'));
 
 	$scope.showPostAdder = false;
 	$scope.appendPost = function(){
@@ -90,6 +92,13 @@ app.controller('AdminController', ['$scope', '$firebaseObject', '$firebaseAuth',
 
 	$scope.saveNewPost = function() {
 		// check for image file and add placeholder if none found //
+
+		var dateObject = {
+				'Month': $scope.postDateMonth,
+				'Day': $scope.postDateDay,
+				'Year': $scope.postDateYear
+			}
+
 		if (!$scope.postImageSource){
 			$scope.postImageSource = "../../img/placeholder_image.jpg"
 		}
@@ -97,7 +106,7 @@ app.controller('AdminController', ['$scope', '$firebaseObject', '$firebaseAuth',
 		$firebaseArray(ref).$save('Posts');
 		var newPostObject = {
 			'Title' : $scope.postTitle,
-			'Date' : $scope.postDate,
+			'Date' : dateObject,
 			'Content' : $scope.postContent,
 			'ImageSource' : $scope.postImageSource
 		};
@@ -138,8 +147,8 @@ app.controller('AdminController', ['$scope', '$firebaseObject', '$firebaseAuth',
 
 		var uploadRef;
 
-		var fileName = document.getElementById('file-name').value;
-		var fileUpload = document.getElementById('theFile');
+		var fileName = document.getElementById('post-file-name').value;
+		var fileUpload = document.getElementById('post-image-file');
 		var file = fileUpload.files[0];
 
 		imageRef = mediaLibrary.child(fileName);
@@ -156,8 +165,8 @@ app.controller('AdminController', ['$scope', '$firebaseObject', '$firebaseAuth',
 
 		var uploadRef;
 
-		var fileName = document.getElementById('file-name').value;
-		var fileUpload = document.getElementById('theFile');
+		var fileName = document.getElementById('recipe-file-name').value;
+		var fileUpload = document.getElementById('recipe-image-file');
 		var file = fileUpload.files[0];
 
 		imageRef = mediaLibrary.child(fileName);
@@ -169,7 +178,24 @@ app.controller('AdminController', ['$scope', '$firebaseObject', '$firebaseAuth',
 		});
 	}
 
+	$scope.uploadNewAboutMedia = function(){
+		var aboutImageSource = document.getElementById('about-image-source');
 
+		var uploadRef;
+
+		var fileName = document.getElementById('about-file-name').value;
+		var fileUpload = document.getElementById('about-image-file');
+		var file = fileUpload.files[0];
+
+		imageRef = mediaLibrary.child(fileName);
+		imageRef.put(file).then(function(snapshot){
+			uploadRef = imageRef.getDownloadURL().then(function(url){
+
+				aboutObject.ImageSource = url;
+				aboutObject.$save();
+			});
+		});
+	}
 
 
 

@@ -1,4 +1,4 @@
-app.controller('CookingController', ['$scope', '$firebaseObject', function($scope, $firebaseObject){
-	var ref = firebase.database().ref('Recipes/');
-	$scope.recipes = $firebaseObject(ref);
+app.controller('CookingController', ['$scope', '$firebaseArray', function($scope, $firebaseArray){
+	var recipeRef = firebase.database().ref('Recipes/');
+	$scope.recipes = $firebaseArray(recipeRef);
 }]);

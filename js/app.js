@@ -120,10 +120,21 @@ angular.module('ngScrollTo')
         templateUrl: 'views/blogpost.html',
         controller: 'BlogPostController'
       })
+      .when('/admin/blog/:id', {
+        templateUrl: 'views/adminblogpost.html',
+        controller: 'AdminBlogPostController'
+      })
+      .when('/admin/recipes/:id', {
+        templateUrl: 'views/adminrecipe.html',
+        controller: 'AdminRecipeController'
+      })
+      .when('/admin/new/blog', {
+        templateUrl: 'views/newadminblogpost.html',
+        controller: 'NewAdminBlogPostController'
+      })
       .otherwise({
         redirectTo: '/'
       })
-  });  
-
+  }); 
 
 

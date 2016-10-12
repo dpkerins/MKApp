@@ -1,0 +1,32 @@
+<div ng-hide="authData">
+	<div class="admin-section">
+		Email: <input type="text" class="email-input"></input>
+		Password: <input type="password" class="password-input"></input>
+		<button ng-click="authorize_password()">SIGN IN!</button>
+	</div>
+</div>
+<div ng-show="authData" class="admin-container">
+	<div class="admin-sidebar">
+		<a href="#/admin/"><h4>Back To Main Admin</h4></a>
+		<button ng-click="logOut()">LOGOUT!!!</button>
+	</div>
+	<div class="admin-content">
+		<div class="admin-header">
+			<h2 class="admin-header-section">{{ adminHeader }}</h2>
+			<button ng-click="obj.$save()" class="change-save">SAVE CHANGES</button>
+		</div>
+		<div class="admin-items">
+			<div class="edit-post admin-section">
+				Title: <input ng-model="currentPost.Title"></input><br><br>
+				Date: <input ng-model="currentPost.Date.Month"></input>
+				<input ng-model="currentPost.Date.Day"></input>
+				<input ng-model="currentPost.Date.Year"></input><br><br>
+				Content: <textarea ng-model="currentPost.Content"></textarea><br><br>
+				Preview Image: <img class="preview-image" src="{{ currentPost.ImageSource }}">
+			</div>
+			<div class="admin-items">
+				<a href="#/admin/new/blog/">NEW POST PLEASE!</a>
+			</div>
+		</div>
+	</div>	
+</div>	

@@ -1,0 +1,26 @@
+<div ng-hide="authData">
+	<div class="admin-section">
+		Email: <input type="text" class="email-input"></input>
+		Password: <input type="password" class="password-input"></input>
+		<button ng-click="authorize_password()">SIGN IN!</button>
+	</div>
+</div>
+<div ng-show="authData" class="admin-container">
+	<div class="admin-sidebar">
+		<a href="#/admin/"><h4>Back To Main Admin</h4></a>
+		<button ng-click="logOut()">LOGOUT!!!</button>
+	</div>
+	<div class="admin-content">
+		<div class="admin-header">
+			<h2 class="admin-header-section">{{ adminHeader }}</h2>
+			<button ng-click="obj.$save()" class="change-save">SAVE CHANGES</button>
+		</div>
+		<div class="admin-items">
+			<div class="edit-post admin-section">
+				Title: <input ng-model="currentRecipe.Title"></input><br><br>
+				Instructions: <textarea ng-model="currentRecipe.Content"></textarea><br><br>
+				Preview Image: <input ng-model="currentRecipe.ImageSource"></input><br><br>
+			</div>
+		</div>
+	</div>	
+</div>	

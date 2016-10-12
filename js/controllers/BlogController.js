@@ -1,4 +1,4 @@
-app.controller('BlogController', ['$scope', '$firebaseObject', function($scope, $firebaseObject){
+app.controller('BlogController', ['$scope', '$firebaseArray', function($scope, $firebaseArray){
 	var ref = firebase.database().ref('Posts/');
-	$scope.posts = $firebaseObject(ref);
+	$scope.posts = $firebaseArray(ref);
 }]);

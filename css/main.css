@@ -66,6 +66,8 @@ pre {
 	font-variant: normal;
 	font-weight: 400;
 	line-height: 18.5714px;
+	width: 100;
+	white-space: pre-wrap;
 }
 /*END OF FONT*/
 a {
@@ -91,10 +93,12 @@ ul {
 	display: relative;
 }
 .main-container {
-	height: 100%;
 	width: 100%;
-	background-image: url('../img/desk.jpg');
-	background-size: cover;
+	height: 30%;
+	background-image: url('../img/logo.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
 	flex: 1 100%;
 }
 .overlay {
@@ -139,19 +143,27 @@ ul {
 	align-items: center;
 }
 .main-div:nth-child(odd){
-	background: rgba(0, 0, 0, 0.1);
+	background-color: rgba(256, 76, 36, 0.1);
 }
 .main-div div{
 	flex: 1 100%;
 }
 .category-page-link {
 }
+.main-header {
+	display: block;
+	width: 100%;
+	height: 10%;
+	padding: 0;
+	background-color: rgba(256, 76, 36, 0.5);
+	z-index: 700;
+}
 .header {
 	display: block;
 	width: 100%;
 	height: 10%;
 	padding: 0;
-	background-color: rgba(0, 0, 0, 0.7);
+	background-color: rgba(256, 76, 36, 0.5);
 	position: fixed;
 	top: 0;
 	z-index: 700;
@@ -162,15 +174,14 @@ ul {
 	display: -webkit-flex;
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
 }
 .header-link {
+	text-align: center;
 	vertical-align: middle;
 	flex: 1;
 }
-.header-link:last-child {
-	text-align: right;
-}
-.header h1 {
+.header-interior h1 {
 	color: white;
 }
 .main-content {
@@ -180,19 +191,60 @@ ul {
 	flex-flow: row wrap;
 	justify-content: center;
 	align-content: center;
-	position: relative;
-	/*top: 100%;*/
 }
 .content {
 	min-height: 80%;
 	width: 100%;
 	display: -webkit-flex;
 	display: flex;
-	flex-flow: row wrap;
+	flex-flow: row;
 	justify-content: center;
 	align-content: center;
 	position: relative;
 	top: 10%;
+}
+.blog-main-content {
+	min-height: 100%;
+	flex: 8;
+	display: -webkit-flex;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	align-content: center;
+	position: relative;
+}
+.cooking-main-content {
+	min-height: 100%;
+	flex: 7;
+	display: -webkit-flex;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	align-content: center;
+	position: relative;
+}
+.about-main-content {
+	min-height: 100%;
+	flex: 7;
+	display: -webkit-flex;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-content: center;
+	position: relative;
+}
+.sidebar {
+	min-height: 100%;
+	flex: 3;
+	text-align: left;
+}
+.inner-sidebar {
+	min-height: 80%;
+	width: 80%;
+	border-radius: 0px;
+	margin-top: 10px;
+	padding: 10px;
+	text-align: center;
 }
 .recipe-content {
 	min-height: 40%;
@@ -206,7 +258,9 @@ ul {
 	width: 100%;
 	position: relative;
 	top: 10%;
-	padding: 10px;
+}
+.inner-post-content {
+	margin: 10px;
 }
 .menu-content {
 	height: 90%;
@@ -234,17 +288,13 @@ ul {
 	flex-flow: row wrap;
 	justify-content: center;
 	align-items: center;
-	background-color: rgba(0, 0, 0, 0.7);
-	padding: 10px;
+	background-color: rgba(256, 76, 36, 0.5);
 	height: 10%-20px;
 	width: 100%;
-	position: relative;
-	top: 10%;
 }
 .social-pic {
-	height: 50px;
-	width: 50px;
-	border-radius: 10px;
+	height: 30px;
+	width: 30px;
 	margin: 5px;
 }
 .link-div {
@@ -279,7 +329,7 @@ ul {
 	flex-flow: row wrap;
 	justify-content: space-around;
 	align-items: center;
-	background-color: rgba(0, 0, 0, 0.1);
+	background-color: rgba(256, 76, 36, 0.1);
 }
 .blog-div:nth-child(even) {
 	background-color: transparent;
@@ -287,8 +337,7 @@ ul {
 .blog-image {
 	width: 300px;
 	height: 300px;
-	border-radius: 7px;
-	border: 1px solid gray;
+	border-radius: 0px;
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
@@ -296,7 +345,7 @@ ul {
 	height: 280px;
 	width: 280px;
 	padding: 10px;
-	border-radius: 7px;
+	border-radius: 0px;
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
@@ -318,32 +367,58 @@ ul {
 	}
 }
 .cooking-div {
-	width: 300px;
-	height: 300px;
-	background-color: rgba(0, 0, 0, 0.1);
-	border-radius: 7px;
-	border: 1px solid gray;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	border-radius: 0px;
+	margin: 10px;
+	text-align: center;
 }
 .cooking-div div{
-	width: 100%;
-	height: 100%;
+	width: 200px;
+	height: 200px;
 }
-.post-div {
-	width: 300px;
-	height: 300px;
-	background-color: rgba(0, 0, 0, 0.1);
-	border-radius: 7px;
-	border: 1px solid gray;
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-.post-div div{
-	width: 100%;
-	height: 100%;
+.cooking-div h4 {
+	margin-top: 2px;
+	margin-bottom: 2px;
 }
 @media (min-width: 600px) {
+	.cooking-div div {
+		width: 300px;
+		height: 300px;
+	}
+}
+.post-div {
+	width: 80%;
+	background-color: rgba(256, 76, 36, 0.1);
+	border-radius: 0px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	padding: 10px;
+	display: -webkit-flex;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+.post-info{
+	text-align: center;
+	width: 200px;
+}
+.post-div-image {
+	width: 200px;
+	height: 200px;
+}
+.main-more-blog-posts {
+	width: 80%;
+	text-align: right;
+}
+@media (min-width: 600px) {
+	.post-info{
+		text-align: center;
+		width: 300px;
+	}
+	.post-div-image {
+		width: 300px;
+		height: 300px;
+	}
 	a h1:hover {
 		color: black;
 		font-weight: 700;
@@ -356,6 +431,22 @@ ul {
 		color: black;
 		font-weight: 700;
 	}
+}
+.sidebar-recipes {
+	width: 100%;
+	display: -webkit-flex;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	align-content: center;
+}
+.sidebar-recipes h3 {
+	width: 100%;
+}
+.main-recipe-img {
+	height: 100px;
+	width: 100px;
+	margin: 5px;
 }
 .recipe-cover-image{
 	height: 40%;
@@ -370,27 +461,24 @@ ul {
 	top: 10%;
 }
 .basic-info {
-	flex: 1 100%;
 	padding: 10px;
 	background-color: transparent;
+	text-align: center;
+	height: 200px;
+	width: 200px;
+	margin: 10px;
+	text-align: right;
+}
+.basic-info-pic {
+	height: 200px;
+	width: 200px;
+	margin: 10px;
+	text-align: left;
 }
 .more-info {
 	flex: 1 100%;
 	padding: 10px;
-}
-.more-info:nth-child(odd) {
-	background-color: rgba(0, 0, 0, 0.1);
-}
-.pic-div {
-	border-radius: 7px;
-	background-image: url("../img/meeee.jpg");
-	background-repeat: no-repeat;
-	background-size: fill;
-	background-position: center;
-	height: 300px;
-	width: 300px;
-	margin: auto;
-	border: black solid 1px;
+	text-align: center;
 }
 .profile-div {
 	padding: 10px;
@@ -405,7 +493,12 @@ ul {
 }
 @media(min-width: 700px) {
 	.basic-info {
-		flex: 1;
+		height: 300px;
+		width: 300px;
+	}
+	.basic-info-pic {
+		height: 300px;
+		width: 300px;
 	}
 	.pic-div {
 		margin-left: 20%;
@@ -419,7 +512,7 @@ ul {
 	text-align: center;
 }
 .resume-div {
-	background-color: rgba(0, 0, 0, 0.1);
+	background-color: rgba(256, 76, 36, 0.1);
 	padding: 10px;
 	width: 100%-10px;
 	text-align: right;

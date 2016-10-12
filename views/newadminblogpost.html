@@ -1,0 +1,33 @@
+<div ng-hide="authData">
+	<div class="admin-section">
+		Email: <input type="text" class="email-input"></input>
+		Password: <input type="password" class="password-input"></input>
+		<button ng-click="authorize_password()">SIGN IN!</button>
+	</div>
+</div>
+<div ng-show="authData" class="admin-container">
+	<div class="admin-sidebar">
+		<a href="#/admin/"><h4>Back To Main Admin</h4></a>
+		<button ng-click="logOut()">LOGOUT!!!</button>
+	</div>
+	<div class="admin-content">
+		<div class="admin-header">
+			<button ng-click="obj.$save()" class="change-save">SAVE CHANGES</button>
+		</div>
+		<div class="admin-items">
+			<div class="posts-section">
+				Title: <input ng-model="postTitle" class="post-input new-title"></input><br><br>
+				Date: <input ng-model="postDate" class="post-input new-date"></input><br><br>
+				Content: <textarea ng-model="postContent" class="post-input new-content"></textarea><br><br>
+				Preview Image: <img id="post-preview-image" class="preview-image" src="../img/placeholder_image.jpg">
+				<div class="media-library admin-section">
+					<input type="file" id="theFile" />Required
+					<input type="text" id="file-name" value="File Name"></input>Required
+					<input type="button" id="post-media-upload-button" value="Upload!" ng-click="uploadNewPostMedia()"></input>
+				</div>
+				<input type="button" ng-click="saveNewPost()" value="SAVE THIS NEW POST"></input><br><br>
+			</div>
+			<input type="button" value="New Post" ng-click="appendPost()"></input>
+		</div>
+	</div>	
+</div>	
