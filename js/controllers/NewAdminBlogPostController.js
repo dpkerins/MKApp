@@ -1,4 +1,5 @@
 app.controller('NewAdminBlogPostController', ['$scope', '$routeParams', '$firebaseArray', '$firebaseAuth', function($scope, $routeParams, $firebaseArray, $firebaseAuth){
+	var ref = firebase.database().ref();
 	
 	var authRef = $firebaseAuth();
 

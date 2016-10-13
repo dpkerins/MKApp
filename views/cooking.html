@@ -2,7 +2,7 @@
 <div appheader class="main-header"></div>
 <div class="main-content">
 	<div class="cooking-main-content">
-		<div ng-repeat="recipe in recipes | filter:recipeSearch" class="cooking-div">
+		<div ng-repeat="recipe in recipes | filter: recipeSearch | orderBy:'Date':true" class="cooking-div">
 			<h4>{{ recipe.Title }}</h4>
 			<a href="#/recipes/{{$index}}"><div style="background: url('{{ recipe.ImageSource }}'); background-position: center; background-size: cover">
 			</div></a>

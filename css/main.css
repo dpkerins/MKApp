@@ -251,7 +251,6 @@ ul {
 	width: 100%;
 	position: relative;
 	top: 10%;
-	padding: 10px;
 }
 .post-content {
 	min-height: 40%;
@@ -260,6 +259,9 @@ ul {
 	top: 10%;
 }
 .inner-post-content {
+	margin: 10px;
+}
+.inner-recipe-content {
 	margin: 10px;
 }
 .menu-content {

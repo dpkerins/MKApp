@@ -2,35 +2,13 @@
 <div appheader class="main-header"></div>
 <div class="main-content">
 	<div class="blog-main-content">
-		<div class="post-div">
-			<div class="post-div-image" style="background: url('{{ blogArray[0].ImageSource }}'); background-position: center; background-size: cover"></div>	
+		<div ng-repeat="post in blogArray | filter: blogSearch | orderBy:'Date':true | limitTo: 4 " class="post-div">
+			<div class="post-div-image" style="background: url('{{ post.ImageSource }}'); background-position: center; background-size: cover"></div>	
 			<div class="post-info">
-				<h3>{{ blogArray[0].Title}}</h3>
-				<h4>{{ blogArray[0].Date.Month + ' ' + blogArray[0].Date.Day + ', ' + blogArray[0].Date.Year }}</h4>
-				<p>{{ blogArray[0].Content | limitTo: 200 }}{{blogArray[0].Content.length > 200 ? '...' : ''}}</p>
-				<a href="#/blog/0">
-					<h4>Read More...</h4>
-				</a>
-			</div>
-		</div>
-		<div class="post-div">
-			<div class="post-div-image" style="background: url('{{ blogArray[1].ImageSource }}'); background-position: center; background-size: cover"></div>	
-			<div class="post-info">
-				<h3>{{ blogArray[1].Title}}</h3>
-				<h4>{{ blogArray[1].Date.Month + ' ' + blogArray[1].Date.Day + ', ' + blogArray[1].Date.Year }}</h4>
-				<p>{{ blogArray[1].Content | limitTo: 200 }}{{blogArray[1].Content.length > 200 ? '...' : ''}}</p>
-				<a href="#/blog/1">
-					<h4>Read More...</h4>
-				</a>
-			</div>
-		</div>	
-		<div class="post-div">
-			<div class="post-div-image" style="background: url('{{ blogArray[2].ImageSource }}'); background-position: center; background-size: cover"></div>	
-			<div class="post-info">
-				<h3>{{ blogArray[2].Title}}</h3>
-				<h4>{{ blogArray[2].Date.Month + ' ' + blogArray[2].Date.Day + ', ' + blogArray[2].Date.Year }}</h4>
-				<p>{{ blogArray[2].Content | limitTo: 200 }}{{blogArray[2].Content.length > 200 ? '...' : ''}}</p>
-				<a href="#/blog/2">
+				<h3>{{ post.Title}}</h3>
+				<h4>{{ post.Date | date : 'short' }}</h4>
+				<p>{{ post.Content | limitTo: 200 }}{{post.Content.length > 200 ? '...' : ''}}</p>
+				<a href="#/blog/{{$index}}">
 					<h4>Read More...</h4>
 				</a>
 			</div>

@@ -7,7 +7,6 @@
 </div>
 <div ng-show="authData" class="admin-container">
 	<div class="admin-sidebar">
-		<h4 ng-click="showAdminWelcome()">Welcome Page</h4>
 		<h4 ng-click="showAdminPersonal()">Personal Info</h4>
 		<h4 ng-click="showAdminBlog()">Blog</h4>
 		<h4 ng-click="showAdminRecipes()">Recipes</h4>
@@ -39,19 +38,6 @@
 				Instagram: <input ng-model="obj.Social_Media.Instagram" type="text" class="social-input"></input><br><br>
 				Twitter: <input ng-model="obj.Social_Media.Twitter" type="text" class="social-input"></input>
 			</div>
-			<div ng-show="adminBlog" class="admin-section">
-				<h4>Blog Posts</h4>
-				<div class="all-posts">
-					<div ng-repeat="post in obj.Posts">
-						<div class="each-post-list">
-							<a href="#/admin/blog/{{$index}}"><h2>{{ post.Title }}</h2></a>
-							<p>{{ post.Date.Month + ' ' + post.Date.Day + ', ' + post.Date.Year }}</p>
-						</div>
-					</div>
-				<div class="admin-items">
-					<a href="#/admin/new/blog">NEW POST PLEASE!</a>
-				</div>
-			</div>
 			<div ng-show="adminRecipes" class="admin-section">
 				<h4>Recipes</h4>
 				<div class="all-recipes">
@@ -60,6 +46,19 @@
 							<a href="#/admin/recipes/{{$index}}"><h2>{{ recipe.Title }}</h2></a>
 						</div>
 					</div>
+				</div>
+			</div>
+			<div ng-show="adminBlog" class="admin-section">
+				<h4>Blog Posts</h4>
+				<div class="all-posts">
+					<div ng-repeat="post in obj.Posts">
+						<div class="each-post-list">
+							<a href="#/admin/blog/{{$index}}"><h2>{{ post.Title }}</h2></a>
+							<p>{{ post.Date | date : 'short' }}</p>
+						</div>
+					</div>
+				<div>
+					<a href="#/admin/new/blog">NEW POST PLEASE!</a>
 				</div>
 			</div>
 		</div>

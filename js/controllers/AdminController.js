@@ -65,6 +65,7 @@ app.controller('AdminController', ['$scope', '$firebaseObject', '$firebaseAuth',
 		$scope.adminBlog = false;
 		$scope.adminRecipes = true;
 		$scope.adminHeader = "Recipes";
+		console.log($scope.adminRecipes);
 	}
 
 

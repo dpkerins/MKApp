@@ -2,14 +2,6 @@ app.controller('BlogPostController', ['$scope', '$routeParams', '$firebaseArray'
 	var index = Number($routeParams.id);
 	var ref = firebase.database().ref('Posts/');
 
-	var monthsArray = ['January', "February", 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-
-
-
-
-
-
-
 
 	$scope.posts = $firebaseArray(ref);
 	$scope.posts.$loaded()
@@ -22,8 +14,6 @@ app.controller('BlogPostController', ['$scope', '$routeParams', '$firebaseArray'
 				var newCommentName = document.getElementById('post-comment-name').value;
 				var newCommentDate = new Date();
 				var newerCommentDate = newCommentDate.toJSON();
-				console.log(newCommentDate.toString());
-				console.log(newCommentDate);
 				var newCommentObject = {
 					'Name': newCommentName,
 					'Message': newCommentMessage,
