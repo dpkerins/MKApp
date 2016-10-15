@@ -619,6 +619,10 @@ ul {
 	width: 80%;
 }
 
+.each-post-list {
+	border: 1px solid black;
+	margin-bottom: 5px;
+}
 
 
 

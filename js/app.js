@@ -84,57 +84,71 @@ angular.module('ngScrollTo')
   });
 
 
-  var app = angular.module('MKApp', ['ngRoute', 'firebase', 'ngScrollTo']);
+  var app = angular.module('MKApp', ['firebase', 'ngScrollTo', 'ui.router']);
 
-  app.config(function($routeProvider){
-    $routeProvider
-      .when('/cooking', {
+  app.config(function($stateProvider){
+    $stateProvider
+      .state('cooking', {
+        url: '/cooking',
         templateUrl: 'views/cooking.html',
         controller: 'CookingController'
       })
-      .when('/blog', {
+      .state('blog', {
+        url: '/blog',
         templateUrl: 'views/blog.html',
         controller: 'BlogController'
       })
-      .when('/', {
+      .state('blog.blog-post', {
+        url: '/{id}',
+        templateUrl: 'views/blogpost.html',
+        controller: 'BlogController',
+      })
+      .state('home', {
+        url: '/',
         templateUrl: 'views/main.html',
         controller: 'MainController'
       })
-      .when('/aboutme', {
+      .state('aboutme', {
+        url: '/aboutme',
         templateUrl: 'views/aboutme.html',
         controller: 'AboutMeController'
       })
-      .when('/menu', {
+      .state('menu', {
+        url: '/menu',
         templateUrl: 'views/menu.html',
         controller: 'MenuController'
       })
-      .when('/admin', {
+      .state('admin', {
+        url: '/admin',
         templateUrl: 'views/admin.html',
         controller: 'AdminController'
       })
-      .when('/recipes/:id', {
+      .state('recipes/:id', {
+        url: '/recipes/:id',
         templateUrl: 'views/recipepost.html',
         controller: 'RecipeController'
       })
-      .when('/blog/:id', {
-        templateUrl: 'views/blogpost.html',
-        controller: 'BlogPostController'
-      })
-      .when('/admin/blog/:id', {
+      .state('admin/blog/:id', {
+        url: '/admin/blog/:id',
         templateUrl: 'views/adminblogpost.html',
-        controller: 'AdminBlogPostController'
+        controller: 'AdminBlogPostController',
       })
-      .when('/admin/recipes/:id', {
+      .state('admin/recipes/:id', {
+        url: 'admin/recipes/:id',
         templateUrl: 'views/adminrecipe.html',
         controller: 'AdminRecipeController'
       })
-      .when('/admin/new/blog', {
+      .state('admin/new/blog', {
+        url: '/admin/new/blog',
         templateUrl: 'views/newadminblogpost.html',
         controller: 'NewAdminBlogPostController'
       })
-      .otherwise({
-        redirectTo: '/'
+      .state('otherwise', {
+        url: '/'
       })
+
+    
+
   }); 
 
 

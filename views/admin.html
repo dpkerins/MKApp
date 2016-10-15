@@ -51,15 +51,15 @@
 			<div ng-show="adminBlog" class="admin-section">
 				<h4>Blog Posts</h4>
 				<div class="all-posts">
+					<div>
+						<a href="#/admin/new/blog">NEW POST PLEASE!</a>
+					</div>
 					<div ng-repeat="post in obj.Posts">
 						<div class="each-post-list">
 							<a href="#/admin/blog/{{$index}}"><h2>{{ post.Title }}</h2></a>
 							<p>{{ post.Date | date : 'short' }}</p>
 						</div>
 					</div>
-				<div>
-					<a href="#/admin/new/blog">NEW POST PLEASE!</a>
-				</div>
 			</div>
 		</div>
 	</div>

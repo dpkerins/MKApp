@@ -1,5 +1,10 @@
-app.controller('NewAdminBlogPostController', ['$scope', '$routeParams', '$firebaseArray', '$firebaseAuth', function($scope, $routeParams, $firebaseArray, $firebaseAuth){
+app.controller('NewAdminBlogPostController', ['$scope', '$firebaseArray', '$firebaseAuth', function($scope, $firebaseArray, $firebaseAuth){
 	var ref = firebase.database().ref();
+	var postRef = firebase.database().ref('Posts');
+
+
+
+	
 	
 	var authRef = $firebaseAuth();
 
@@ -39,33 +44,48 @@ app.controller('NewAdminBlogPostController', ['$scope', '$routeParams', '$fireba
 			$scope.postImageSource = "../../img/placeholder_image.jpg"
 		}
 
+		var urlID = $scope.postTitle.replace(' ', '');
+
 		$firebaseArray(ref).$save('Posts');
 		var newPostObject = {
 			'Title' : $scope.postTitle,
 			'Date' : $scope.postDate,
 			'Content' : $scope.postContent,
-			'ImageSource' : $scope.postImageSource
+			'ImageSource' : $scope.postImageSource,
+			'Id' : urlID
 		};
-		postList.$add(newPostObject);
+		postList.$add({urlID : newPostObject});
+		$firebaseArray(ref).$save('Posts');
 		$scope.postTitle = "";
 		$scope.postDate = "";
 		$scope.postContent = "";
 		$scope.postImageSource = "";
 		$scope.showPostAdder = false;
+		var newPreviewImage = document.getElementById('post-preview-image');
+		newPreviewImage.src = "../../img/placeholder_image.jpg";
+		postRef.orderByChild("Date");
 	};
 
+	var storage = firebase.storage();
+	var storageRef = storage.ref();
+	var mediaLibrary = storageRef.child('media');
 
+	$scope.uploadNewPostMedia = function(){
+		var previewImage = document.getElementById('post-preview-image');
 
+		var uploadRef;
 
+		var fileName = document.getElementById('post-file-name').value;
+		var fileUpload = document.getElementById('post-image-file');
+		var file = fileUpload.files[0];
 
-
-
-	var index = Number($routeParams.id);
-	var ref = firebase.database().ref('Posts/');
-	$scope.posts = $firebaseArray(ref);
-	$scope.posts.$loaded()
-		.then(function(){
-			key = $scope.posts.$keyAt(index);
-			$scope.currentPost = $scope.posts.$getRecord(key);
+		imageRef = mediaLibrary.child(fileName);
+		imageRef.put(file).then(function(snapshot){
+			uploadRef = imageRef.getDownloadURL().then(function(url){
+				$scope.postImageSource = url;
+				previewImage.src = url;
+			});
 		});
+	}
+
 }]);

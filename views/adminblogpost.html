@@ -18,9 +18,7 @@
 		<div class="admin-items">
 			<div class="edit-post admin-section">
 				Title: <input ng-model="currentPost.Title"></input><br><br>
-				Date: <input ng-model="currentPost.Date.Month"></input>
-				<input ng-model="currentPost.Date.Day"></input>
-				<input ng-model="currentPost.Date.Year"></input><br><br>
+				Date: <input ng-model="postDate" class="post-input new-date"></input><br><br>
 				Content: <textarea ng-model="currentPost.Content"></textarea><br><br>
 				Preview Image: <img class="preview-image" src="{{ currentPost.ImageSource }}">
 			</div>
