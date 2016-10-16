@@ -1,22 +1,36 @@
-<div appheader class="header"></div>
+<div class="main-container"></div>
+<div appheader class="main-header"></div>
 <div class="post-cover-image" style="background: url('{{ currentPost.ImageSource }}'); background-position: center; background-size: cover">
 </div>	
 <div class="post-content">
-	<div class="inner-post-content">
-	<h2>{{ currentPost.Title }}</h4>
-	<p>{{ currentPost.Date | date : 'short' }}</p>	
-	<pre>{{ currentPost.Content }}</pre>
+	<div class="blogpost-main-content">
+		<div class="inner-post-content">
+		<h2>{{ currentPost.Title }}</h4>
+		<p>{{ currentPost.Date | date : 'short' }}</p>
+		<pre>{{ currentPost.Content }}</pre>
+		</div>
+		<div class="post-comments">
+			<form class="new-post-form">
+				<input type="text" id="post-comment-name" value="Please Put Your Name Here"></input><br><br>
+				<textarea type="text" id="post-comment-message" value="Write your comment here..."></textarea><br><br>
+				<input type="button" ng-click="submitPostComment()" value="Submit"></input>
+			</form>
+			<div class="comment-div">
+				<div ng-repeat="comment in postCommentList | orderBy:'Date':true | limitTo: 5 ">
+					<h4>{{ comment.Name }}</h4>
+					<p>{{ comment.Date | date : 'short' }}</p>
+					<p>{{ comment.Message }}</p>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class="post-comments">
-		<form class="new-post-form">
-			<input type="text" id="post-comment-name" value="Please Put Your Name Here"></input>
-			<textarea type="text" id="post-comment-message" value="Write your comment here..."></textarea>
-			<input type="button" ng-click="submitPostComment()" value="Submit"></input>
-		</form>
-		<div ng-repeat="comment in postCommentList | orderBy:'Date':true | limitTo: 5 ">
-			<h4>{{ comment.Name }}</h4>
-			<p>{{ comment.Date | date : 'short' }}</p>
-			<p>{{ comment.Message }}</p>
+	<div class="sidebar">
+		<div class="inner-sidebar">
+			<div class="social-links">
+				<a href="https://www.instagram.com/diggerous/" target="_blank"><img class="social-pic" src="img/Instagram_Logo.png"></a>
+				<a href="https://twitter.com/douglaskerins" target="_blank"><img class="social-pic" src="img/Twitter_Logo.png"></a>
+			</div>
+			Search Blog Entries: <input type="text" ng-model="blogSearch"></input>
 		</div>
 	</div>
 </div>

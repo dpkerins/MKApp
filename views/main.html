@@ -8,7 +8,7 @@
 				<h3>{{ post.Title}}</h3>
 				<h4>{{ post.Date | date : 'short' }}</h4>
 				<p>{{ post.Content | limitTo: 200 }}{{post.Content.length > 200 ? '...' : ''}}</p>
-				<a href="#/blog/{{$index}}">
+				<a ui-sref="blog-post({id: post.urlID })">
 					<h4>Read More...</h4>
 				</a>
 			</div>

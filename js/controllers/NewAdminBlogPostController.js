@@ -36,7 +36,8 @@ app.controller('NewAdminBlogPostController', ['$scope', '$firebaseArray', '$fire
 
 	var postList = $firebaseArray(ref.child('Posts'));
 
-	$scope.postDate = (new Date()).toJSON();
+	var todayDate = (new Date()).toJSON()
+	$scope.postDate = todayDate;
 
 	$scope.saveNewPost = function() {
 		// check for image file and add placeholder if none found //
@@ -51,19 +52,23 @@ app.controller('NewAdminBlogPostController', ['$scope', '$firebaseArray', '$fire
 			'Title' : $scope.postTitle,
 			'Date' : $scope.postDate,
 			'Content' : $scope.postContent,
-			'ImageSource' : $scope.postImageSource,
-			'Id' : urlID
+			'ImageSource' : $scope.postImageSource
 		};
-		postList.$add({urlID : newPostObject});
+		postList.$add(newPostObject).then(function(ref){
+			var id = ref.key;
+			var arrayLocation = postList.$indexFor(id);
+			postList[arrayLocation].urlID = id;
+			postList.$save(arrayLocation);
+		})
+
 		$firebaseArray(ref).$save('Posts');
 		$scope.postTitle = "";
-		$scope.postDate = "";
+		$scope.postDate = todayDate;
 		$scope.postContent = "";
 		$scope.postImageSource = "";
 		$scope.showPostAdder = false;
 		var newPreviewImage = document.getElementById('post-preview-image');
 		newPreviewImage.src = "../../img/placeholder_image.jpg";
-		postRef.orderByChild("Date");
 	};
 
 	var storage = firebase.storage();

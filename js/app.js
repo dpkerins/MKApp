@@ -98,10 +98,10 @@ angular.module('ngScrollTo')
         templateUrl: 'views/blog.html',
         controller: 'BlogController'
       })
-      .state('blog.blog-post', {
-        url: '/{id}',
+      .state('blog-post', {
+        url: '/blog/{id}',
         templateUrl: 'views/blogpost.html',
-        controller: 'BlogController',
+        controller: 'BlogPostController',
       })
       .state('home', {
         url: '/',

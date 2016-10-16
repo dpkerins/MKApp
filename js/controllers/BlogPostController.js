@@ -1,12 +1,11 @@
-app.controller('BlogPostController', ['$scope', '$routeParams', '$firebaseArray', function($scope, $routeParams, $firebaseArray){
-	var index = Number($routeParams.id);
+app.controller('BlogPostController', ['$scope', '$stateParams', '$firebaseArray', function($scope, $stateParams, $firebaseArray){
 	var ref = firebase.database().ref('Posts/');
 
 
 	$scope.posts = $firebaseArray(ref);
 	$scope.posts.$loaded()
 		.then(function(){
-			key = $scope.posts.$keyAt(index);
+			var key = $stateParams.id;
 			$scope.currentPost = $scope.posts.$getRecord(key);
 			$scope.postCommentList = $firebaseArray(ref.child(key).child('Comments'));
 			$scope.submitPostComment = function(){
