@@ -1,0 +1,32 @@
+<div ng-hide="authData">
+	<div class="admin-section">
+		Email: <input type="text" class="email-input"></input>
+		Password: <input type="password" class="password-input"></input>
+		<button ng-click="authorize_password()">SIGN IN!</button>
+	</div>
+</div>
+<div ng-show="authData" class="admin-container">
+	<div class="admin-sidebar">
+		<a href="#/admin/"><h4>Back To Main Admin</h4></a>
+		<button ng-click="logOut()">LOGOUT!!!</button>
+	</div>
+	<div class="admin-content">
+		<div class="admin-header">
+			<button ng-click="obj.$save()" class="change-save">SAVE CHANGES</button>
+		</div>
+		<div class="admin-items">
+			<div class="recipes-section">
+				Title: <input ng-model="recipeTitle" class="recipe-input new-title"></input><br><br>
+				Content: <textarea ng-model="recipeContent" class="recipe-input new-content"></textarea><br><br>
+				Preview Image: <img id="recipe-preview-image" class="preview-image" src="../img/placeholder_image.jpg">
+				<div class="media-library admin-section">
+					<input type="file" id="recipe-image-file" />Required
+					<input type="text" id="recipe-file-name" value="File Name"></input>Required
+					<input type="button" id="recipe-media-upload-button" value="Upload!" ng-click="uploadNewRecipeMedia()"></input>
+				</div>
+				<input type="button" ng-click="saveNewRecipe()" value="SAVE THIS NEW recipe"></input><br><br>
+			</div>
+			<input type="button" value="New recipe" ng-click="appendRecipe()"></input>
+		</div>
+	</div>
+</div>

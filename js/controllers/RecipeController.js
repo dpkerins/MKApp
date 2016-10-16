@@ -1,27 +1,26 @@
-app.controller('RecipeController', ['$scope', '$routeParams', '$firebaseArray', function($scope, $routeParams, $firebaseArray){
-	var index = Number($routeParams.id);
+app.controller('RecipeController', ['$scope', '$stateParams', '$firebaseArray', function($scope, $stateParams, $firebaseArray){
 	var ref = firebase.database().ref('Recipes/');
 
 
 	$scope.recipes = $firebaseArray(ref);
 	$scope.recipes.$loaded()
 		.then(function(){
-			key = $scope.recipes.$keyAt(index);
+			var key = $stateParams.id;
 			$scope.currentRecipe = $scope.recipes.$getRecord(key);
-			$scope.recipeCommentList = $firebaseArray(ref.child(key).child('Recipes'));
-			$scope.submitPostComment = function(){
-				var newRecipeMessage = document.getElementById('recipe-comment-message').value;
-				var newRecipeName = document.getElementById('recipe-comment-name').value;
-				var newRecipeDate = new Date();
-				var newerCommentDate = newRecipeDate.toJSON();
-				var newRecipeObject = {
-					'Name': newRecipeName,
-					'Message': newRecipeMessage,
+			$scope.recipeCommentList = $firebaseArray(ref.child(key).child('Comments'));
+			$scope.submitRecipeComment = function(){
+				var newCommentMessage = document.getElementById('recipe-comment-message').value;
+				var newCommentName = document.getElementById('recipe-comment-name').value;
+				var newCommentDate = new Date();
+				var newerCommentDate = newCommentDate.toJSON();
+				var newCommentObject = {
+					'Name': newCommentName,
+					'Message': newCommentMessage,
 					'Date' : newerCommentDate
 				};
-				$scope.recipeCommentList.$add(newRecipeObject);
-				newRecipeMessage = "";
-				newRecipeName = "";
+				$scope.recipeCommentList.$add(newCommentObject);
+				newCommentMessage = "";
+				newCommentName = "";
 			}
 		});	
 }]);

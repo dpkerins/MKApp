@@ -7,7 +7,7 @@
 </div>
 <div ng-show="authData" class="admin-container">
 	<div class="admin-sidebar">
-		<a href="#/admin/"><h4>Back To Main Admin</h4></a>
+		<a href="#/admin"><h4>Back To Main Admin</h4></a>
 		<button ng-click="logOut()">LOGOUT!!!</button>
 	</div>
 	<div class="admin-content">
@@ -17,9 +17,9 @@
 		</div>
 		<div class="admin-items">
 			<div class="edit-post admin-section">
-				Title: <input ng-model="currentPost.Title"></input><br><br>
-				Date: <input ng-model="postDate" class="post-input new-date"></input><br><br>
-				Content: <textarea ng-model="currentPost.Content"></textarea><br><br>
+				Title: <input class="admin-title" ng-model="currentPost.Title"></input><br><br>
+				Date: <input class="admin-date" ng-model="currentPost.Date" class="post-input new-date"></input><br><br>
+				Content: <textarea class="admin-info" ng-model="currentPost.Content"></textarea><br><br>
 				Preview Image: <img class="preview-image" src="{{ currentPost.ImageSource }}">
 			</div>
 			<div class="admin-items">

@@ -4,7 +4,7 @@
 <div class="recipe-content">
 	<div class="inner-recipe-content">
 		<h2>{{ currentRecipe.Title }}</h4>
-		<p>{{ currentRecipe.Date }}</p>
+		<p>{{ currentRecipe.Date | date : 'short' }}</p>
 		<pre>{{ currentRecipe.Content }}</pre>
 	</div>
 </div>
@@ -14,7 +14,7 @@
 		<textarea type="text" id="recipe-comment-message" value="Write your comment here..."></textarea>
 		<input type="button" ng-click="submitRecipeComment()" value="Submit"></input>
 	</form>
-	<div ng-repeat="comment in recipeCommentList | orderBy:'Date':true | limitTo: 5 ">
+	<div ng-repeat="comment in recipeCommentList | orderBy:'Date':true">
 		<h4>{{ comment.Name }}</h4>
 		<p>{{ comment.Date | date : 'short' }}</p>
 		<p>{{ comment.Message }}</p>

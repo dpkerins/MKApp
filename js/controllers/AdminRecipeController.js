@@ -1,4 +1,4 @@
-app.controller('AdminRecipeController', ['$scope', '$routeParams', '$firebaseArray', '$firebaseAuth', function($scope, $routeParams, $firebaseArray, $firebaseAuth){
+app.controller('AdminRecipeController', ['$scope', '$stateParams', '$firebaseArray', '$firebaseAuth', function($scope, $stateParams, $firebaseArray, $firebaseAuth){
 	
 	var authRef = $firebaseAuth();
 
@@ -33,7 +33,7 @@ app.controller('AdminRecipeController', ['$scope', '$routeParams', '$firebaseArr
 
 
 
-	var index = Number($routeParams.id);
+	var index = Number($stateParams.id);
 	var ref = firebase.database().ref('Recipes/');
 	$scope.recipes = $firebaseArray(ref);
 	$scope.recipes.$loaded()

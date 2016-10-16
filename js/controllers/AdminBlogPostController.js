@@ -1,4 +1,4 @@
-app.controller('AdminBlogPostController', ['$scope', '$routeParams', '$firebaseArray', '$firebaseAuth', function($scope, $routeParams, $firebaseArray, $firebaseAuth){
+app.controller('AdminBlogPostController', ['$scope', '$stateParams', '$firebaseArray', '$firebaseAuth', function($scope, $stateParams, $firebaseArray, $firebaseAuth){
 	
 	var authRef = $firebaseAuth();
 
@@ -34,7 +34,7 @@ app.controller('AdminBlogPostController', ['$scope', '$routeParams', '$firebaseA
 
 
 
-	var index = Number($routeParams.id);
+	var index = Number($stateParams.id);
 	var ref = firebase.database().ref('Posts/');
 	$scope.posts = $firebaseArray(ref);
 	$scope.posts.$loaded()

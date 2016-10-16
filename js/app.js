@@ -123,32 +123,35 @@ angular.module('ngScrollTo')
         templateUrl: 'views/admin.html',
         controller: 'AdminController'
       })
-      .state('recipes/:id', {
-        url: '/recipes/:id',
+      .state('recipe-post', {
+        url: '/recipes/{id}',
         templateUrl: 'views/recipepost.html',
         controller: 'RecipeController'
       })
-      .state('admin/blog/:id', {
-        url: '/admin/blog/:id',
+      .state('blog-admin', {
+        url: '/admin/blog/{id}',
         templateUrl: 'views/adminblogpost.html',
         controller: 'AdminBlogPostController',
       })
-      .state('admin/recipes/:id', {
-        url: 'admin/recipes/:id',
+      .state('recipe-admin', {
+        url: '/admin/recipes/{id}',
         templateUrl: 'views/adminrecipe.html',
         controller: 'AdminRecipeController'
       })
-      .state('admin/new/blog', {
+      .state('new-blog-admin', {
         url: '/admin/new/blog',
         templateUrl: 'views/newadminblogpost.html',
         controller: 'NewAdminBlogPostController'
       })
-      .state('otherwise', {
-        url: '/'
+      .state('new-recipe-admin', {
+        url: '/admin/new/recipe',
+        templateUrl: 'views/newadminrecipe.html',
+        controller: 'NewAdminRecipeController'
       })
-
-    
-
   }); 
+
+  app.config(function($urlRouterProvider){
+      $urlRouterProvider.otherwise('/');
+  })
 
 

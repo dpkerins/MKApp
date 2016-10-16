@@ -25,6 +25,7 @@
 					Last Name: <input ng-model="obj.AboutMe.PersonalInfo.LastName" type="text" class="personal-input"></input>
 					Age: <input ng-model="obj.AboutMe.PersonalInfo.Age" type="text" class="personal-input"></input><br><br>
 					Preview Image: <img id="about-preview-image" class="preview-image" src="{{ obj.AboutMe.PersonalInfo.ImageSource }}"><br><br>
+					More Info: <input ng-model="obj.AboutMe.PersonalInfo.MoreInfo" type="text" class="personal-input"></input><br><br>
 					Image Source: <input ng-model="obj.AboutMe.PersonalInfo.ImageSource" id="about-image-source"></input>
 					<div class="media-library admin-section">
 						<input type="file" id="about-image-file" />Required
@@ -41,9 +42,13 @@
 			<div ng-show="adminRecipes" class="admin-section">
 				<h4>Recipes</h4>
 				<div class="all-recipes">
+					<div>
+						<a href="#/admin/new/recipe">NEW RECIPE PLEASE!</a>
+					</div>
 					<div ng-repeat="recipe in obj.Recipes">
 						<div class="each-recipe-list">
-							<a href="#/admin/recipes/{{$index}}"><h2>{{ recipe.Title }}</h2></a>
+							<a ui-sref="recipe-admin({id: $index})"><h2>{{ recipe.Title }}</h2></a>
+							<p>{{ recipe.Date | date : 'short' }}</p>
 						</div>
 					</div>
 				</div>
@@ -56,7 +61,7 @@
 					</div>
 					<div ng-repeat="post in obj.Posts">
 						<div class="each-post-list">
-							<a href="#/admin/blog/{{$index}}"><h2>{{ post.Title }}</h2></a>
+							<a ui-sref="blog-admin({id: $index})"><h2>{{ post.Title }}</h2></a>
 							<p>{{ post.Date | date : 'short' }}</p>
 						</div>
 					</div>

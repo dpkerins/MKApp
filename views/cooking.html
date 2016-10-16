@@ -4,7 +4,7 @@
 	<div class="cooking-main-content">
 		<div ng-repeat="recipe in recipes | filter: recipeSearch | orderBy:'Date':true" class="cooking-div">
 			<h4>{{ recipe.Title }}</h4>
-			<a href="#/recipes/{{$index}}"><div style="background: url('{{ recipe.ImageSource }}'); background-position: center; background-size: cover">
+			<a  ui-sref="recipe-post({id: recipe.urlID })"><div style="background: url('{{ recipe.ImageSource }}'); background-position: center; background-size: cover">
 			</div></a>
 		</div>
 	</div>

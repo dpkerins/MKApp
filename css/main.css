@@ -646,6 +646,21 @@ ul {
 	border: 1px solid black;
 	margin-bottom: 5px;
 }
+.each-recipe-list {
+	border: 1px solid black;
+	margin-bottom: 5px;
+}
+
+.admin-title {
+	width: 200px;
+}
+.admin-date {
+	width: 200px;
+}
+.admin-info {
+	width: 90%;
+	height: 300px;
+}
 
 
 

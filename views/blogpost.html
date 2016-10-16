@@ -1,6 +1,6 @@
 <div class="main-container"></div>
 <div appheader class="main-header"></div>
-<div class="post-cover-image" style="background: url('{{ currentPost.ImageSource }}'); background-position: center; background-size: cover">
+<div class="post-cover-image" style="background: url('{{ currentPost.ImageSource }}'); background-position: center top; background-size: cover">
 </div>	
 <div class="post-content">
 	<div class="blogpost-main-content">
@@ -16,7 +16,7 @@
 				<input type="button" ng-click="submitPostComment()" value="Submit"></input>
 			</form>
 			<div class="comment-div">
-				<div ng-repeat="comment in postCommentList | orderBy:'Date':true | limitTo: 5 ">
+				<div ng-repeat="comment in postCommentList | orderBy:'Date':true">
 					<h4>{{ comment.Name }}</h4>
 					<p>{{ comment.Date | date : 'short' }}</p>
 					<p>{{ comment.Message }}</p>
