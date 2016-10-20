@@ -292,6 +292,13 @@ ul {
 	width: 90%;
 	height: 150px;
 }
+#recipe-comment-name{
+	width: 200px;
+}
+#recipe-comment-message {
+	width: 90%;
+	height: 150px;
+}
 .new-comment-form {
 	margin: 20px;
 }
