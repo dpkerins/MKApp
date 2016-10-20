@@ -13,12 +13,13 @@
 	<div class="admin-content">
 		<div class="admin-header">
 			<h2 class="admin-header-section">{{ adminHeader }}</h2>
-			<button ng-click="obj.$save()" class="change-save">SAVE CHANGES</button>
+			<button ng-click="savePost()" class="change-save">SAVE CHANGES</button>
 		</div>
 		<div class="admin-items">
 			<div class="edit-post admin-section">
 				Title: <input class="admin-title" ng-model="currentPost.Title"></input><br><br>
 				Date: <input class="admin-date" ng-model="currentPost.Date" class="post-input new-date"></input><br><br>
+				Location: <input class="admin-loation" ng-model="currentPost.Location"></input><br><br>
 				Content: <textarea class="admin-info" ng-model="currentPost.Content"></textarea><br><br>
 				Preview Image: <img class="preview-image" src="{{ currentPost.ImageSource }}">
 			</div>

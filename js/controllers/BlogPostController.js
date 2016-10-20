@@ -8,6 +8,7 @@ app.controller('BlogPostController', ['$scope', '$stateParams', '$firebaseArray'
 			var key = $stateParams.id;
 			$scope.currentPost = $scope.posts.$getRecord(key);
 			$scope.postCommentList = $firebaseArray(ref.child(key).child('Comments'));
+			document.getElementById('post-content-div').innerHTML = $scope.currentPost.Content;
 			$scope.submitPostComment = function(){
 				var newCommentMessage = document.getElementById('post-comment-message').value;
 				var newCommentName = document.getElementById('post-comment-name').value;
@@ -23,4 +24,11 @@ app.controller('BlogPostController', ['$scope', '$stateParams', '$firebaseArray'
 				newCommentName = "";
 			}
 		});	
+
+	
+	
+	$scope.recipeArray = $firebaseArray(firebase.database().ref('Recipes/'));	
+	
+	var placeRef = firebase.database().ref('Locations/');
+	$scope.locations = $firebaseArray(placeRef);	
 }]);

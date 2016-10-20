@@ -3,5 +3,9 @@ app.controller('MainController', ['$scope', '$firebaseArray', '$window', '$docum
 	$scope.welcomePage = $firebaseArray(ref);
 	$scope.blogArray = $firebaseArray(firebase.database().ref('Posts/'));
 	$scope.recipeArray = $firebaseArray(firebase.database().ref('Recipes/'));
+
+	
+	var placeRef = firebase.database().ref('Locations/');
+	$scope.locations = $firebaseArray(placeRef);
 	
 }]);

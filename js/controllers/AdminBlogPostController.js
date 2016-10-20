@@ -1,5 +1,8 @@
-app.controller('AdminBlogPostController', ['$scope', '$stateParams', '$firebaseArray', '$firebaseAuth', function($scope, $stateParams, $firebaseArray, $firebaseAuth){
+app.controller('AdminBlogPostController', ['$scope', '$stateParams', '$firebaseArray', '$firebaseObject', '$firebaseAuth', function($scope, $stateParams, $firebaseArray, $firebaseObject, $firebaseAuth){
+	var postsRef = firebase.database().ref('Posts');
+	var postsObject = $firebaseObject(postsRef);	
 	
+
 	var authRef = $firebaseAuth();
 
 	$scope.auth = authRef;
@@ -31,15 +34,38 @@ app.controller('AdminBlogPostController', ['$scope', '$stateParams', '$firebaseA
 
 
 
-
-
-
 	var index = Number($stateParams.id);
 	var ref = firebase.database().ref('Posts/');
 	$scope.posts = $firebaseArray(ref);
 	$scope.posts.$loaded()
 		.then(function(){
-			key = $scope.posts.$keyAt(index);
+			var key = $scope.posts.$keyAt(index);
 			$scope.currentPost = $scope.posts.$getRecord(key);
+			console.log($scope.currentPost.Content);
+
+			$scope.savePost = function(){
+				postsObject[key] = $scope.currentPost;
+				postsObject.$save();
+			};
 		});
+
+
 }]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

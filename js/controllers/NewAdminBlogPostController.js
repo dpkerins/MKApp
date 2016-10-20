@@ -1,5 +1,5 @@
-app.controller('NewAdminBlogPostController', ['$scope', '$firebaseArray', '$firebaseAuth', function($scope, $firebaseArray, $firebaseAuth){
-	var ref = firebase.database().ref();
+app.controller('NewAdminBlogPostController', ['$scope', '$firebaseArray', '$firebaseObject', '$firebaseAuth', function($scope, $firebaseArray, $firebaseObject, $firebaseAuth){
+	var dbRef = firebase.database().ref();
 	var postRef = firebase.database().ref('Posts');
 
 
@@ -34,9 +34,9 @@ app.controller('NewAdminBlogPostController', ['$scope', '$firebaseArray', '$fire
 		});
 	};
 
-	var postList = $firebaseArray(ref.child('Posts'));
+	var postList = $firebaseArray(dbRef.child('Posts'));
 
-	var todayDate = (new Date()).toJSON()
+	var todayDate = (new Date()).toJSON();
 	$scope.postDate = todayDate;
 
 	$scope.saveNewPost = function() {
@@ -46,11 +46,13 @@ app.controller('NewAdminBlogPostController', ['$scope', '$firebaseArray', '$fire
 		}
 
 		var urlID = $scope.postTitle.replace(' ', '');
+		var postLocation = $scope.postLocation;
 
-		$firebaseArray(ref).$save('Posts');
+		$firebaseArray(dbRef).$save('Posts');
 		var newPostObject = {
 			'Title' : $scope.postTitle,
 			'Date' : $scope.postDate,
+			'Location' : $scope.postLocation,
 			'Content' : $scope.postContent,
 			'ImageSource' : $scope.postImageSource
 		};
@@ -59,11 +61,17 @@ app.controller('NewAdminBlogPostController', ['$scope', '$firebaseArray', '$fire
 			var arrayLocation = postList.$indexFor(id);
 			postList[arrayLocation].urlID = id;
 			postList.$save(arrayLocation);
+		}).then(function(ref){
+			var locationList = $firebaseArray(dbRef.child('Locations'));
+			locationList.$add(postLocation);
+			// $firebaseArray(dbRef).$save('Locations');
+			// locationBlogList.$add(newPostObject);
 		})
 
-		$firebaseArray(ref).$save('Posts');
+		$firebaseArray(dbRef).$save('Posts');
 		$scope.postTitle = "";
 		$scope.postDate = todayDate;
+		$scope.postLocation = "";
 		$scope.postContent = "";
 		$scope.postImageSource = "";
 		$scope.showPostAdder = false;

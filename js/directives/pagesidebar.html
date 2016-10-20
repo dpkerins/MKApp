@@ -1,0 +1,30 @@
+<div class="inner-sidebar">
+	<div class="social-links">
+		<a href="https://www.instagram.com/diggerous/" target="_blank"><img class="social-pic" src="img/Instagram_Logo.png"></a>
+		<a href="https://twitter.com/douglaskerins" target="_blank"><img class="social-pic" src="img/Twitter_Logo.png"></a>
+	</div>
+	<input type="text" ng-model="search"></input><br><br>
+	<h3>Travel With Me!</h3>
+	<div ng-repeat="place in locations"><a href="#/blog/location/{{place.$value}}"> {{ place.$value }} </a></div><br>
+	<div class="sidebar-recipes">
+		<h3>Recent Recipes</h3>
+		<a href="#/recipes/0">
+			<div class="main-recipe-img" style="background: url('{{ recipeArray[0].ImageSource }}'); background-position: center; background-size: cover"></div>
+		</a>
+		<a href="#/recipes/1">
+			<div class="main-recipe-img" style="background: url('{{ recipeArray[1].ImageSource }}'); background-position: center; background-size: cover"></div>
+		</a>
+		<a href="#/recipes/2">
+			<div class="main-recipe-img" style="background: url('{{ recipeArray[2].ImageSource }}'); background-position: center; background-size: cover"></div>
+		</a>
+		<a href="#/recipes/3">
+			<div class="main-recipe-img" style="background: url('{{ recipeArray[3].ImageSource }}'); background-position: center; background-size: cover"></div>
+		</a>
+		<a href="#/recipes/4">
+			<div class="main-recipe-img" style="background: url('{{ recipeArray[4].ImageSource }}'); background-position: center; background-size: cover"></div>
+		</a>
+		<a href="#/recipes/5">
+			<div class="main-recipe-img" style="background: url('{{ recipeArray[5].ImageSource }}'); background-position: center; background-size: cover"></div>
+		</a>
+	</div>
+</div>

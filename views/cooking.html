@@ -2,21 +2,13 @@
 <div appheader class="main-header"></div>
 <div class="main-content">
 	<div class="cooking-main-content">
-		<div ng-repeat="recipe in recipes | filter: recipeSearch | orderBy:'Date':true" class="cooking-div">
+		<div ng-repeat="recipe in recipes | filter: search | orderBy:'Date':true" class="cooking-div">
 			<h4>{{ recipe.Title }}</h4>
 			<a  ui-sref="recipe-post({id: recipe.urlID })"><div style="background: url('{{ recipe.ImageSource }}'); background-position: center; background-size: cover">
 			</div></a>
 		</div>
 	</div>
-	<div class="sidebar">
-		<div class="inner-sidebar">
-			<div class="social-links">
-				<a href="https://www.instagram.com/diggerous/" target="_blank"><img class="social-pic" src="img/Instagram_Logo.png"></a>
-				<a href="https://twitter.com/douglaskerins" target="_blank"><img class="social-pic" src="img/Twitter_Logo.png"></a>
-			</div>
-			Search Recipes: <input type="text" ng-model="recipeSearch"></input>
-		</div>
-	</div>
+	<div pagesidebar class="sidebar"></div>
 </div>
 
 

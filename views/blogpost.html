@@ -5,12 +5,12 @@
 <div class="post-content">
 	<div class="blogpost-main-content">
 		<div class="inner-post-content">
-		<h2>{{ currentPost.Title }}</h4>
-		<p>{{ currentPost.Date | date : 'short' }}</p>
-		<pre>{{ currentPost.Content }}</pre>
+			<h2>{{ currentPost.Title }}</h4>
+			<p>{{ currentPost.Date | date : 'short' }}</p>
+			<pre id="post-content-div"></pre>
 		</div>
-		<div class="post-comments">
-			<form class="new-post-form">
+		<div class="comments">
+			<form class="new-comment-form">
 				<input type="text" id="post-comment-name" value="Please Put Your Name Here"></input><br><br>
 				<textarea type="text" id="post-comment-message" value="Write your comment here..."></textarea><br><br>
 				<input type="button" ng-click="submitPostComment()" value="Submit"></input>
@@ -24,15 +24,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="sidebar">
-		<div class="inner-sidebar">
-			<div class="social-links">
-				<a href="https://www.instagram.com/diggerous/" target="_blank"><img class="social-pic" src="img/Instagram_Logo.png"></a>
-				<a href="https://twitter.com/douglaskerins" target="_blank"><img class="social-pic" src="img/Twitter_Logo.png"></a>
-			</div>
-			Search Blog Entries: <input type="text" ng-model="blogSearch"></input>
-		</div>
-	</div>
+	<div singlesidebar class="sidebar"></div>
 </div>
 
 

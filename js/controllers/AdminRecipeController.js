@@ -1,5 +1,8 @@
-app.controller('AdminRecipeController', ['$scope', '$stateParams', '$firebaseArray', '$firebaseAuth', function($scope, $stateParams, $firebaseArray, $firebaseAuth){
+app.controller('AdminRecipeController', ['$scope', '$stateParams', '$firebaseArray', '$firebaseObject', '$firebaseAuth', function($scope, $stateParams, $firebaseArray, $firebaseObject, $firebaseAuth){
+	var recipeRef = firebase.database().ref('Recipes');
+	var recipesObject = $firebaseObject(recipeRef);	
 	
+
 	var authRef = $firebaseAuth();
 
 	$scope.auth = authRef;
@@ -40,6 +43,11 @@ app.controller('AdminRecipeController', ['$scope', '$stateParams', '$firebaseArr
 		.then(function(){
 			key = $scope.recipes.$keyAt(index);
 			$scope.currentRecipe = $scope.recipes.$getRecord(key);
+
+			$scope.saveRecipe = function(){
+				recipesObject[key] = $scope.currentRecipe;
+				recipesObject.$save();
+			};
 		});
 	
 }]);

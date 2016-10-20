@@ -62,6 +62,7 @@
 					<div ng-repeat="post in obj.Posts">
 						<div class="each-post-list">
 							<a ui-sref="blog-admin({id: $index})"><h2>{{ post.Title }}</h2></a>
+							<p>{{ post.Location }}</p>
 							<p>{{ post.Date | date : 'short' }}</p>
 						</div>
 					</div>

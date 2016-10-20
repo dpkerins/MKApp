@@ -1,25 +1,31 @@
-<div appheader class="header"></div>
-<div class="recipe-cover-image" style="background: url('{{ currentRecipe.ImageSource }}'); background-position: center; background-size: cover">
+<div class="main-container"></div>
+<div appheader class="main-header"></div>
+<div class="post-cover-image" style="background: url('{{ currentRecipe.ImageSource }}'); background-position: center top; background-size: cover">
 </div>	
 <div class="recipe-content">
-	<div class="inner-recipe-content">
-		<h2>{{ currentRecipe.Title }}</h4>
-		<p>{{ currentRecipe.Date | date : 'short' }}</p>
-		<pre>{{ currentRecipe.Content }}</pre>
-	</div>
+	<div class="recipe-main-content">
+		<div class="inner-recipe-content">
+			<h2>{{ currentRecipe.Title }}</h4>
+			<p>{{ currentRecipe.Date | date : 'short' }}</p>
+			<pre id="recipe-content-div"></pre>
+		</div>
+		<div class="comments">
+			<form class="new-comment-form">
+				<input type="text" id="recipe-comment-name" value="Please Put Your Name Here"></input>
+				<textarea type="text" id="recipe-comment-message" value="Write your comment here..."></textarea>
+				<input type="button" ng-click="submitRecipeComment()" value="Submit"></input>
+			</form>
+			<div ng-repeat="comment in recipeCommentList | orderBy:'Date':true">
+				<h4>{{ comment.Name }}</h4>
+				<p>{{ comment.Date | date : 'short' }}</p>
+				<p>{{ comment.Message }}</p>
+			</div>
+		</div>
+	</div>	
+	<div singlesidebar class="sidebar"></div>
 </div>
-<div class="recipe-comments">
-	<form class="new-recipe-form">
-		<input type="text" id="recipe-comment-name" value="Please Put Your Name Here"></input>
-		<textarea type="text" id="recipe-comment-message" value="Write your comment here..."></textarea>
-		<input type="button" ng-click="submitRecipeComment()" value="Submit"></input>
-	</form>
-	<div ng-repeat="comment in recipeCommentList | orderBy:'Date':true">
-		<h4>{{ comment.Name }}</h4>
-		<p>{{ comment.Date | date : 'short' }}</p>
-		<p>{{ comment.Message }}</p>
-	</div>
-</div>
+
+
 
 
 
