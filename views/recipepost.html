@@ -11,14 +11,16 @@
 		</div>
 		<div class="comments">
 			<form class="new-comment-form">
-				<input type="text" id="recipe-comment-name" value="Please Put Your Name Here"></input>
-				<textarea type="text" id="recipe-comment-message" value="Write your comment here..."></textarea>
+				<input type="text" id="recipe-comment-name" value="Please Put Your Name Here"></input><br><br>
+				<textarea type="text" id="recipe-comment-message" value="Write your comment here..."></textarea><br><br>
 				<input type="button" ng-click="submitRecipeComment()" value="Submit"></input>
 			</form>
-			<div ng-repeat="comment in recipeCommentList | orderBy:'Date':true">
-				<h4>{{ comment.Name }}</h4>
-				<p>{{ comment.Date | date : 'short' }}</p>
-				<p>{{ comment.Message }}</p>
+			<div class="comment-div">
+				<div ng-repeat="comment in recipeCommentList | orderBy:'Date':true">
+					<h4>{{ comment.Name }}</h4>
+					<p>{{ comment.Date | date : 'short' }}</p>
+					<p>{{ comment.Message }}</p>
+				</div>
 			</div>
 		</div>
 	</div>	

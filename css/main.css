@@ -611,9 +611,6 @@ ul {
 	float: left;
 	font-weight: bold;
 }
-.change-save {
-	float: right;
-}
 .admin-items {
 	width: 100%;
 	flex: 9;
@@ -628,6 +625,12 @@ ul {
 	flex: 1 100%;
 	padding: 10px;
 }
+.change-save {
+	border: 1px solid black;
+	padding: 10px;
+}
+
+
 .preview-image {
 	height: 150px;
 }
