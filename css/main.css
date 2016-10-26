@@ -607,6 +607,10 @@ ul {
 	width: 100%;
 	border-bottom: 2px solid black;
 }
+.admin-header div{
+	float: right;
+	display: inline-block;
+}
 .admin-header-section {
 	float: left;
 	font-weight: bold;
@@ -628,6 +632,8 @@ ul {
 .change-save {
 	border: 1px solid black;
 	padding: 10px;
+	color: white;
+	background-color: black;
 }
 
 

@@ -13,7 +13,10 @@
 	<div class="admin-content">
 		<div class="admin-header">
 			<h2 class="admin-header-section">{{ adminHeader }}</h2>
-			<button ng-click="saveRecipe()" class="change-save">SAVE CHANGES</button>
+			<input type="button" ng-click="saveRecipe()" class="change-save" value="SAVE CHANGES"></input>
+			<div>
+				<a href="#/admin/new/recipe">NEW RECIPE PLEASE!</a>
+			</div>
 		</div>
 		<div class="admin-items">
 			<div class="edit-post admin-section">
@@ -21,9 +24,6 @@
 				Date: <input class="admin-date" ng-model="currentPost.Date" class="post-input new-date"></input><br><br>
 				Content: <textarea class="admin-info" ng-model="currentRecipe.Content"></textarea><br><br>
 				Preview Image: <img class="preview-image" src="{{ currentRecipe.ImageSource }}">
-			</div>
-			<div>
-				<a href="#/admin/new/recipe">NEW RECIPE PLEASE!</a>
 			</div>
 		</div>
 	</div>	
