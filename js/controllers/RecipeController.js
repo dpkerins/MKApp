@@ -14,7 +14,7 @@ app.controller('RecipeController', ['$scope', '$stateParams', '$firebaseArray', 
 			var key = $stateParams.id;
 			$scope.currentRecipe = $scope.recipes.$getRecord(key);
 			$scope.recipeCommentList = $firebaseArray(ref.child(key).child('Comments'));
-			document.getElementById('post-content-div').innerHTML = $scope.currentPost.Content;
+			document.getElementById('recipe-content-div').innerHTML = $scope.currentRecipe.Content;
 			$scope.submitRecipeComment = function(){
 				var newCommentMessage = document.getElementById('recipe-comment-message').value;
 				var newCommentName = document.getElementById('recipe-comment-name').value;

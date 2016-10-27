@@ -91,6 +91,8 @@ ul {
 	height: 100%;
 	padding: 0;
 	display: relative;
+	width: 95%;
+	margin: 0 auto;
 }
 .main-container {
 	width: 100%;
@@ -161,7 +163,7 @@ ul {
 .header {
 	display: block;
 	width: 100%;
-	height: 10%;
+	/*height: 10%;*/
 	padding: 0;
 	background-color: rgba(256, 76, 36, 0.5);
 	position: fixed;
@@ -169,7 +171,7 @@ ul {
 	z-index: 700;
 }
 .header-interior {
-	height: 100%;
+	/*height: 100%;*/
 	width: 100%;
 	display: -webkit-flex;
 	display: flex;
@@ -180,6 +182,9 @@ ul {
 	text-align: center;
 	vertical-align: middle;
 	flex: 1;
+}
+.header-link h1 {
+	margin: 0;
 }
 .header-interior h1 {
 	color: white;
@@ -206,11 +211,6 @@ ul {
 .blog-main-content {
 	min-height: 100%;
 	flex: 8;
-	/*display: -webkit-flex;
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-around;
-	align-content: center;*/
 	position: relative;
 }
 .cooking-main-content {
@@ -236,13 +236,12 @@ ul {
 .sidebar {
 	min-height: 100%;
 	flex: 3;
-	text-align: left;
 }
 .inner-sidebar {
 	min-height: 80%;
 	width: 80%;
 	border-radius: 0px;
-	margin-top: 10px;
+	margin: 10px auto 0 auto;
 	padding: 10px;
 	text-align: center;
 }
@@ -498,9 +497,9 @@ ul {
 	top: 10%;
 }
 .post-cover-image{
-	height: 40%;
+	height: 60%;
 	width: 100%;
-	position: relative;
+	display: relative;
 }
 .basic-info {
 	padding: 10px;
