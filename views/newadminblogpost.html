@@ -6,10 +6,7 @@
 	</div>
 </div>
 <div ng-show="authData" class="admin-container">
-	<div class="admin-sidebar">
-		<a href="#/admin/"><h4>Back To Main Admin</h4></a>
-		<button ng-click="logOut()">LOGOUT!!!</button>
-	</div>
+	<div adminsidebar class="admin-sidebar"></div>
 	<div class="admin-content">
 		<div class="admin-header">
 			<button ng-click="obj.$save()" class="change-save">SAVE CHANGES</button>

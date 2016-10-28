@@ -6,16 +6,13 @@
 	</div>
 </div>
 <div ng-show="authData" class="admin-container">
-	<div class="admin-sidebar">
-		<a href="#/admin"><h4>Back To Main Admin</h4></a>
-		<h2 ng-click="logOut()">LOGOUT!!!</h2>
-	</div>
+	<div adminsidebar class="admin-sidebar"></div>
 	<div class="admin-content">
 		<div class="admin-header">
 			<h2 class="admin-header-section">{{ adminHeader }}</h2>
 			<input type="button" ng-click="saveRecipe()" class="change-save" value="SAVE CHANGES"></input>
 			<div>
-				<a href="#/admin/new/recipe">NEW RECIPE PLEASE!</a>
+				<a ui-sref="new-recipe-admin">NEW RECIPE PLEASE!</a>
 			</div>
 		</div>
 		<div class="admin-items">

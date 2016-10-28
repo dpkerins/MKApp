@@ -6,12 +6,7 @@
 	</div>
 </div>
 <div ng-show="authData" class="admin-container">
-	<div class="admin-sidebar">
-		<h4 ng-click="showAdminPersonal()">Personal Info</h4>
-		<h4 ng-click="showAdminBlog()">Blog</h4>
-		<h4 ng-click="showAdminRecipes()">Recipes</h4>
-		<button ng-click="logOut()">LOGOUT!!!</button>
-	</div>
+	<div adminsidebar class="admin-sidebar"></div>
 	<div class="admin-content">
 		<div class="admin-header">
 			<h2 class="admin-header-section">{{ adminHeader }}</h2>

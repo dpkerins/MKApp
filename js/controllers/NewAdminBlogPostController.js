@@ -46,7 +46,7 @@ app.controller('NewAdminBlogPostController', ['$scope', '$firebaseArray', '$fire
 		}
 
 		var urlID = $scope.postTitle.replace(' ', '');
-		var postLocation = $scope.postLocation;
+		var postLocation = $scope.postLocation.toLowerCase();
 
 		$firebaseArray(dbRef).$save('Posts');
 		var newPostObject = {
