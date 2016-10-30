@@ -226,13 +226,11 @@ ul {
 }
 .about-main-content {
 	min-height: 100%;
-	flex: 7;
-	display: -webkit-flex;
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-between;
-	align-content: top;
+	flex: 8;
 	position: relative;
+	justify-content: center;
+	width: 100%;
+	padding: 10px 0;
 }
 .sidebar {
 	min-height: 100%;
@@ -505,23 +503,19 @@ ul {
 	display: relative;
 }
 .basic-info {
-	padding: 10px;
 	background-color: transparent;
 	text-align: center;
-	height: 200px;
-	width: 200px;
+	width: calc(100% - 20px);
 	margin: 10px;
-	text-align: right;
+	vertical-align: top;
 }
 .basic-info-pic {
-	height: 200px;
-	width: 200px;
-	margin: 10px;
-	text-align: left;
+	height: 150px;
+	width: 150px;
+	margin: auto;
 }
 .more-info {
-	flex: 1 100%;
-	padding: 10px;
+	margin: 10px;
 	text-align: center;
 }
 .profile-div {
@@ -535,14 +529,16 @@ ul {
 	margin-left: 10%;
 	margin-right: 10%;
 }
-@media(min-width: 700px) {
+@media (min-width: 600px) {
 	.basic-info {
-		height: 300px;
-		width: 300px;
+		height: calc(300px - 20px);
+		width: calc(100% - 345px);
+		display: inline-block;
 	}
 	.basic-info-pic {
 		height: 300px;
 		width: 300px;
+		display: inline-block;
 	}
 	.pic-div {
 		margin-left: 20%;
