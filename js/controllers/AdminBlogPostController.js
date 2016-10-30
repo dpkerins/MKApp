@@ -41,11 +41,14 @@ app.controller('AdminBlogPostController', ['$scope', '$stateParams', '$firebaseA
 		.then(function(){
 			var key = $scope.posts.$keyAt(index);
 			$scope.currentPost = $scope.posts.$getRecord(key);
-			console.log($scope.currentPost.Content);
 
 			$scope.savePost = function(){
 				postsObject[key] = $scope.currentPost;
-				postsObject.$save();
+				postsObject.$save().then(function(ref){
+					var currentLocation = $scope.currentPost.Location.toLowerCase();
+					var currentLocationRef = firebase.database().ref('Locations/' + currentLocation);
+					currentLocationRef.set(currentLocation);
+				});
 			};
 		});
 

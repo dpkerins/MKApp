@@ -429,38 +429,40 @@ ul {
 	}
 }
 .post-div {
-	width: 80%;
+	width: 100%;
 	background-color: rgba(256, 76, 36, 0.1);
 	border-radius: 0px;
 	margin: 10px auto;
-	padding: 10px;
-	display: -webkit-flex;
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-between;
-	align-items: center;
-
+	justify-content: center;
+	padding: 10px 0;
 }
 .post-info{
 	text-align: center;
-	width: 200px;
+	width: calc(100% - 20px);
+	margin: 10px;
+	vertical-align: top;
 }
 .post-div-image {
-	width: 200px;
-	height: 200px;
+	width: 150px;
+	height: 150px;
+	margin: auto;
 }
 .main-more-blog-posts {
-	width: 80%;
+	width: 100%;
 	text-align: right;
 }
 @media (min-width: 600px) {
 	.post-info{
 		text-align: center;
-		width: 300px;
+		height: 300px;
+		width: calc(100% - 345px);
+		display: inline-block;
 	}
 	.post-div-image {
 		width: 300px;
 		height: 300px;
+		margin: 10px;
+		display: inline-block;
 	}
 	a h1:hover {
 		color: black;

@@ -1,6 +1,8 @@
 app.controller('NewAdminBlogPostController', ['$scope', '$firebaseArray', '$firebaseObject', '$firebaseAuth', function($scope, $firebaseArray, $firebaseObject, $firebaseAuth){
 	var dbRef = firebase.database().ref();
 	var postRef = firebase.database().ref('Posts');
+	var locationRef = firebase.database().ref('Locations');
+	var locationObject = $firebaseObject(locationRef);
 
 
 
@@ -63,9 +65,9 @@ app.controller('NewAdminBlogPostController', ['$scope', '$firebaseArray', '$fire
 			postList.$save(arrayLocation);
 		}).then(function(ref){
 			var locationList = $firebaseArray(dbRef.child('Locations'));
-			locationList.$add(postLocation);
-			// $firebaseArray(dbRef).$save('Locations');
-			// locationBlogList.$add(newPostObject);
+			var currentLocationRef = firebase.database().ref('Locations/' + postLocation);
+			currentLocationRef.set(postLocation);
+			// locationList.$add(postLocation);
 		})
 
 		$firebaseArray(dbRef).$save('Posts');
