@@ -1,4 +1,6 @@
-app.controller('MainController', ['$scope', '$firebaseArray', '$window', '$document', function($scope, $firebaseArray, $window, $document){
+app.controller('MainController', ['$scope', '$firebaseArray', '$firebaseObject', function($scope, $firebaseArray, $firebaseObject){
+	$scope.sidebarRecipes = $firebaseObject(firebase.database().ref('Recipes/'));	
+
 	var ref = firebase.database().ref('WelcomePage/');
 	$scope.welcomePage = $firebaseArray(ref);
 	$scope.blogArray = $firebaseArray(firebase.database().ref('Posts/'));

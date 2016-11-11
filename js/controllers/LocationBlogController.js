@@ -1,4 +1,6 @@
-app.controller('LocationBlogController', ['$scope', '$stateParams', '$firebaseArray', function($scope, $stateParams, $firebaseArray){
+app.controller('LocationBlogController', ['$scope', '$stateParams', '$firebaseArray', '$firebaseObject', function($scope, $stateParams, $firebaseArray, $firebaseObject){
+	$scope.sidebarRecipes = $firebaseObject(firebase.database().ref('Recipes/'));	
+
 	var ref = firebase.database().ref('Posts/');
 
 	$scope.posts = $firebaseArray(ref);

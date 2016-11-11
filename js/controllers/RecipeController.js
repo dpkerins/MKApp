@@ -1,4 +1,6 @@
-app.controller('RecipeController', ['$scope', '$stateParams', '$firebaseArray', function($scope, $stateParams, $firebaseArray){
+app.controller('RecipeController', ['$scope', '$stateParams', '$firebaseArray', '$firebaseObject', function($scope, $stateParams, $firebaseArray, $firebaseObject){
+	$scope.sidebarRecipes = $firebaseObject(firebase.database().ref('Recipes/'));
+
 	var ref = firebase.database().ref('Recipes/');
 
 	
